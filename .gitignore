@@ -1,0 +1,17 @@
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+node_modules
+public
+prof
+tsconfig.tsbuildinfo
+.quartz-cache
+private/
+
+# Obsidian: 个人状态不入库，其余配置要跟着仓库走
+content/.obsidian/workspace.json
+content/.obsidian/workspace-mobile.json
+content/.obsidian/cache
+content/.trash/
