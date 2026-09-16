@@ -73,17 +73,33 @@ ai-garden/
 
 ## 日常操作
 
-### 只写作（推荐在每台设备上这么做）
+### 本机现状（这台 Mac）
+
+| 路径 | 是什么 | 能不能用 Obsidian 打开 |
+| --- | --- | --- |
+| `~/Documents/md/ai-garden-vault` | **正式 vault 克隆**（Gitee） | ✅ **就用这个** |
+| `~/Documents/md/ai-garden/content/` | 站点仓库里的内容副本 | ⚠️ 是 CI 的产物，改了会被覆盖 |
+| `<站点仓库>/.vault-cache/` | `push-vault.sh` 的缓存仓 | ❌ 脚本会对它 `reset --hard` |
+
+Obsidian 已经注册好 `ai-garden-vault`，打开即用。
+
+### 日常写作（任何设备，包括这台）
 
 ```bash
 git clone https://gitee.com/MeverikC/ai-garden-contents.git ai-garden-vault
 ```
 
-Obsidian 打开**仓库根目录**。配置都在仓库里，开箱即用。写完 `git push`，站点会自动重建。
+Obsidian 打开**仓库根目录**。配置都在仓库里，开箱即用。
+
+```bash
+git pull && …写… && git add -A && git commit -m "note: …" && git push
+```
+
+推送后最长 1 小时站点自动重建。
 
 > 装 Obsidian 社区插件 **Git**（自动 pull + 定时 push）可以免敲命令。
 
-### 在本机改完 content/ 后推回 Gitee
+### 逃生口：在站点仓库里手改了 content/ 想推回上游
 
 ```bash
 ./scripts/push-vault.sh           # 同步 content/ → Gitee 并推送
@@ -91,6 +107,7 @@ Obsidian 打开**仓库根目录**。配置都在仓库里，开箱即用。写�
 ```
 
 首次运行会在 `.vault-cache/` 克隆一份 Gitee 仓库（已 gitignore），之后只做增量同步。
+脚本会在 `reset --hard` 前检查缓存仓是否干净，脏了就拒绝执行——避免吃掉未提交的改动。
 
 ### 立刻发布（不等定时任务）
 
@@ -124,7 +141,7 @@ gh secret set GITEE_TOKEN -R Ryn-Mic/ai-garden
 
 ## 用 Obsidian 写作
 
-1. Obsidian → **Open folder as vault** → 选择 `content/`（**不是**仓库根目录）
+1. Obsidian → **Open folder as vault** → 选 vault 根目录（本机是 `~/Documents/md/ai-garden-vault`）
 2. `Cmd/Ctrl + P` → **Insert template** → 选 `概念` / `Agent工具` / `教程` / `对比` / `项目` / `资料`
 3. 用 `[[双链]]` 互连，`Cmd/Ctrl + G` 看图谱
 

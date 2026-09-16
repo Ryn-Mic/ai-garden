@@ -5,7 +5,12 @@
 #   ./scripts/push-vault.sh              # 同步并推送
 #   ./scripts/push-vault.sh -n           # 只看会改什么，不提交
 #
+# ⚠️ 这不是日常写作路径。日常写作请在正式 vault 克隆里：
+#      ~/Documents/md/ai-garden-vault   （Obsidian 打开这个）
+#    这个脚本只服务于“在站点仓库里手改了 content/ 想推回上游”的场合。
+#
 # 依赖：git、rsync。首次运行会在 .vault-cache/ 克隆一份 Gitee 仓库（已 gitignore）。
+# 不要把 .vault-cache/ 用 Obsidian 打开 —— 脚本会对它 reset --hard。
 #
 # 设计说明：Gitee 内容仓库的根目录 = Obsidian Vault 根目录，
 # 所以本地 content/ 要平移到克隆仓库的根目录，而不是 content/。
@@ -30,6 +35,25 @@ command -v rsync >/dev/null || { echo "缺少 rsync" >&2; exit 1; }
 
 # 1. 准备/更新本地克隆
 if [ -d "$CACHE/.git" ]; then
+  # 关键护栏：下面要 reset --hard，如果有未提交改动会被直接吃掉。
+  # 正常流程下脚本每次都会提交完自己的改动，所以这里脏 = 出了意外
+  # （上一次跑挂了，或者有人在 Obsidian 里打开了这个缓存目录改东西）。
+  if [ -n "$(git -C "$CACHE" status --porcelain)" ]; then
+    {
+      echo "❌ $CACHE 有未提交的改动，拒绝执行 reset --hard（会丢失它们）"
+      echo
+      git -C "$CACHE" status --short | head -20
+      echo
+      echo "处理方式二选一："
+      echo "  1) 改动有用 → cd \"$CACHE\" && git add -A && git commit -m '...' && git push"
+      echo "  2) 改动不要了   → rm -rf \"$CACHE\" 后重跑本脚本"
+      echo
+      echo "提示：这个目录是脚本的缓存仓，不要用 Obsidian 打开它。"
+      echo "      日常写作请打开正式 vault：~/Documents/md/ai-garden-vault"
+    } >&2
+    exit 1
+  fi
+
   echo "→ 更新缓存仓库 $CACHE"
   git -C "$CACHE" fetch -q origin "$BRANCH"
   git -C "$CACHE" checkout -q "$BRANCH"
