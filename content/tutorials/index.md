@@ -12,6 +12,7 @@ tags: [moc, tutorials]
 
 - [[Quartz部署指南]] — 从零发布这个站
 - [[Obsidian配置指南]] — 让 Vault 和 Quartz 对齐
+- [[多端同步与发布流程]] — 多设备写作不打架，推送到上线全链路
 
 ## AI 应用
 
