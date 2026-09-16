@@ -27,7 +27,7 @@ stack: [Obsidian, Markdown, Quartz, Gitee, GitHub Actions, GitHub Pages]
 | --- | --- | --- |
 | 写作 | Obsidian | 本地优先、双链、插件生态、纯 md |
 | 存储 | `content/` 目录 | 就是 Vault，同时是站点源目录，**一份数据** |
-| 存储 | Gitee `ai-garden-contents` | 写作仓库。国内多端同步快，一个 Vault 一个 clone |
+| 存储 | iCloud + Gitee `ai-garden-contents` | Vault 本体放 iCloud（Apple 设备自动同步），Gitee 是 Mac push 的远端 |
 | 构建 | [Quartz](https://github.com/jackyzha0/quartz) | 原生支持双链/图谱/搜索/反链 |
 | CI | GitHub Actions | 拉 Gitee 内容 → 构建 → 发布，一个工作流走完 |
 | 托管 | GitHub Pages | 免费、自动 HTTPS；备选 Cloudflare Pages |
@@ -36,9 +36,9 @@ stack: [Obsidian, Markdown, Quartz, Gitee, GitHub Actions, GitHub Pages]
 ## 架构
 
 ```text
-设备 A / B / C 上的 Obsidian
-      ↓  (Markdown + [[Wikilink]])
-  Gitee: ai-garden-contents        ← 唯一真相来源（Vault 根 = 仓库根）
+设备 A / B / C 上的 Obsidian（iPhone / iPad / Mac）
+      ↕  iCloud 同步（vault 本体：笔记 + .obsidian + .git）
+  Gitee: ai-garden-contents        ← 仓库远端（Mac push）
       ↓  GitHub Actions 每小时 / 手动触发
   content/  in GitHub: ai-garden   ← 内容副本
       ↓  npx quartz build
@@ -92,7 +92,10 @@ stack: [Obsidian, Markdown, Quartz, Gitee, GitHub Actions, GitHub Pages]
 ## 日常操作
 
 ```bash
-# 另开一台设备：clone Gitee 内容仓库，Obsidian 打开仓库根目录
+# iPhone / iPad / Mac：Obsidian 直接开 iCloud 里那份，不 clone
+#   ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ai-garden
+
+# 没有 iCloud 的机器：clone Gitee 内容仓库，Obsidian 打开仓库根目录
 git clone https://gitee.com/MeverikC/ai-garden-contents.git
 
 # 本机（站点仓库里改完 content/ 后）一条命令推回 Gitee

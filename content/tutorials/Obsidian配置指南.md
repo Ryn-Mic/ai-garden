@@ -18,7 +18,13 @@ prerequisites: []
 
 ### 1. 打开 Vault
 
-**只写作的机器**（推荐）：先把写作仓库 clone 下来，Obsidian 打开**仓库根目录**。
+**iPhone / iPad / Mac（推荐）**：vault 本体在 iCloud 里，Obsidian 直接打开这个目录，不用克隆：
+
+```text
+~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ai-garden
+```
+
+**没有 iCloud 的机器**：把写作仓库 clone 下来，Obsidian 打开**仓库根目录**。
 
 ```bash
 git clone https://gitee.com/MeverikC/ai-garden-contents.git ai-garden-vault
@@ -109,7 +115,8 @@ tags: [concept, rag]
 ## 常见坑
 
 > [!warning] 踩坑记录
-> - **换设备后笔记没同步**：两个仓库都是 git 仓库，写完记得 `git push`。或者装 Obsidian 社区插件 **Git**，设成启动自动 pull、定时自动 commit & push。
+> - **换设备后笔记没同步**：Apple 设备之间靠 iCloud 自动同步（确认 Obsidian 打开的是 iCloud 里那份）；站点要更新得由 Mac `git push`。
+> - **iCloud 把文件“优化”成占位符**：Finder 里对 vault 文件夹右键 → **保留下载**，否则 `git` / `quartz build` 会读到空文件。
 > - **多台设备各改各的**：`.obsidian/workspace.json`（当前开的标签页）已 gitignore，不会互相冲。但同一篇笔记在两台设备同时改仍会冲突，先 pull 再写。
 > - **链接在 Quartz 上变红**：Obsidian 用了绝对路径（`/concepts/RAG`），改成 `[[RAG]]`。
 > - **文件名带空格**：URL 会变成 `%20` 或连字符，尽量用中文连写或 `-` 连接，例如 `Claude-Code.md`。
