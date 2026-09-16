@@ -1,13 +1,23 @@
-name: Deploy Quartz site to GitHub Pages
+name: Build & Deploy AI Garden
+
+# 一个工作流包办：同步 Gitee 内容 → 构建 Quartz → 发布 GitHub Pages。
+#
+# 为什么合并成一个而不是拆成两个文件：
+# GitHub Actions 用 GITHUB_TOKEN 推的提交不会触发其它工作流（防循环），
+# 所以「同步」和「部署」如果拆开，同步推完内容后部署不会自动跑，
+# 除非额外用 PAT。合并成一个工作流就没有这个问题。
 
 on:
   push:
     branches:
       - main
+  schedule:
+    # 每小时拉一次 Gitee 内容。GitHub 的 cron 是 UTC，且高峰期可能延迟几分钟。
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write # 需要写权限，才能把同步下来的内容提交回本仓库
   pages: write
   id-token: write
 
@@ -15,14 +25,72 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
+env:
+  GITEE_OWNER: MeverikC
+  GITEE_REPO: ai-garden-contents
 
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # Quartz 要读 git 历史来算笔记的创建/修改日期
+
+      # ---------------------------------------------------------------- 同步
+      - name: Sync content from Gitee
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        run: |
+          set -uo pipefail
+
+          if [ -n "${GITEE_TOKEN:-}" ]; then
+            URL="https://oauth2:${GITEE_TOKEN}@gitee.com/${GITEE_OWNER}/${GITEE_REPO}.git"
+          else
+            URL="https://gitee.com/${GITEE_OWNER}/${GITEE_REPO}.git"
+          fi
+
+          clone_ok=0
+          if git clone --depth 1 -q "$URL" /tmp/vault 2>/tmp/clone-err; then
+            clone_ok=1
+          else
+            # 出错信息里可能带 token，先脱敏再打印
+            if [ -n "${GITEE_TOKEN:-}" ]; then
+              sed -i "s|${GITEE_TOKEN}|***|g" /tmp/clone-err
+            fi
+            echo "::warning::拉取 Gitee 内容失败，本次沿用仓库里已有的 content/。原因："
+            head -3 /tmp/clone-err
+          fi
+
+          if [ "$clone_ok" = "1" ]; then
+            # Gitee 仓库根目录 = Vault 根目录，镜像进 content/
+            # 带 / 的排除规则只匹配顶层，不会误伤笔记里的同名文件
+            rsync -a --delete \
+              --exclude='/.git/' \
+              --exclude='/.gitignore' \
+              --exclude='/README.md' \
+              --exclude='/.gitee/' \
+              --exclude='/.github/' \
+              /tmp/vault/ content/
+
+            if [ -z "$(git status --porcelain content)" ]; then
+              echo "✅ 内容无变化，跳过提交"
+            else
+              echo "📝 内容有变化："
+              git status --short content | head -40
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git add -A content
+              git commit -q -m "content: sync from gitee@$(git -C /tmp/vault rev-parse --short HEAD)"
+              git push
+            fi
+          fi
+
+      # ---------------------------------------------------------------- 构建
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
@@ -36,24 +104,18 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm ci
 
       - name: Build Quartz
         run: npx quartz build
 
+      # ---------------------------------------------------------------- 部署
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: public
 
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

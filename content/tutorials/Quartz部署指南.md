@@ -18,18 +18,23 @@ prerequisites: ["[[Obsidian配置指南]]"]
 ## 仓库结构
 
 ```text
-ai-garden/
-├── content/            # Obsidian Vault（你只写这里）
+ai-garden/                    # 站点仓库（GitHub）
+├── content/                  # 内容副本，由 Gitee 同步而来
 │   ├── index.md
 │   ├── concepts/ agents/ tutorials/ comparisons/ projects/ resources/
-│   ├── assets/         # 图片
-│   ├── templates/      # 站点不发布
+│   ├── assets/               # 图片
+│   ├── templates/            # 站点不发布
 │   └── .obsidian/
-├── quartz/             # Quartz 框架源码（不要改，除非要定制）
-├── quartz.config.ts    # 站点主配置
-├── quartz.layout.ts    # 页面布局
+├── quartz/                   # Quartz 框架源码
+├── scripts/push-vault.sh     # 把本地 content/ 推回 Gitee 写作仓库
+├── quartz.config.ts          # 站点主配置
+├── quartz.layout.ts          # 页面布局
 └── .github/workflows/deploy.yaml
 ```
+
+> [!warning] 两个仓库
+> 站点仓库是**构建产物**，写作仓库是 [Gitee `ai-garden-contents`](https://gitee.com/MeverikC/ai-garden-contents)。
+> 这里的内容会被同步覆盖——要改内容请改上游。详见 [[ai-garden]]。
 
 > [!warning] 注意
 > Quartz 4 的配置是 `quartz.config.ts`（TypeScript），不是 YAML。改配置改这个文件。
@@ -52,7 +57,7 @@ npx quartz build --serve
 
 ```ts
 pageTitle: "AI Garden",
-baseUrl: "yourname.github.io/ai-garden",   // ← 必须改，否则资源路径错
+baseUrl: "Ryn-Mic.github.io/ai-garden",   // ← 本项目的实际值，换仓库时记得改
 locale: "zh-CN",
 ```
 
@@ -78,11 +83,23 @@ git push -u origin main
 
 仓库 → **Settings → Pages → Build and deployment → Source** 选 **GitHub Actions**。
 
-工作流 `.github/workflows/deploy.yaml` 会在每次 push 到 `main` 时构建并发布。
+工作流 `.github/workflows/deploy.yaml` 会在每次 push 到 `main`、以及每小时定时触发时，拉取 Gitee 内容 → 构建 → 发布。
 
-### 5. 验证
+### 5. 给 CI 配 Gitee 读取权限（仅当内容仓库是私有的）
 
-Actions 里 `Deploy Quartz site to GitHub Pages` 变成绿色后，访问：
+写作仓库如果是公开的，跳过这步——`git clone` 免密就直接能拉。
+
+如果是私有的，去 Gitee **设置 → 私人令牌**建一个只勾 `projects` 的令牌，然后在站点仓库里存成 secret：
+
+```bash
+gh secret set GITEE_TOKEN -R 你的用户名/ai-garden
+```
+
+工作流会自动检测：有 `GITEE_TOKEN` 就用鉴权 URL，没有就匿名拉。拉取失败只会告警，不会阻断构建。
+
+### 6. 验证
+
+Actions 里 `Build & Deploy AI Garden` 变成绿色后，访问：
 
 ```text
 https://用户名.github.io/ai-garden
@@ -116,6 +133,8 @@ https://用户名.github.io/ai-garden
 > [!warning] 踩坑记录
 > - **全站样式丢失 / 链接 404**：99% 是 `baseUrl` 写错（带了 `https://` 或末尾斜杠）。
 > - **构建报 Node 版本**：本仓库启用了 `engine-strict`，Node 必须 ≥ 22。
+> - **改了内容但网站没变**：内容是**从 Gitee 单向同步**过来的。直接改 GitHub 里的 `content/` 会在下次同步（最长 1 小时）被覆盖。改上游，或者 `gh workflow run deploy.yaml` 立刻触发。
+> - **同步告警 "拉取 Gitee 内容失败"**：内容仓库是私有的但没配 `GITEE_TOKEN` secret，或者令牌过期了。
 > - **本地能看，线上空白**：`content/` 里只有一个 md 目录但**没有 index.md**，或者 `ignorePatterns` 把它排除了。
 > - **图片不显示**：Obsidian 的附件目录要设成 `assets`（见 [[Obsidian配置指南]]），否则相对路径对不上。
 > - **中文文件名链接 404**：本地文件名和链接里的汉字要完全一致（含全角/半角）。

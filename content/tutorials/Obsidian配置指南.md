@@ -16,12 +16,20 @@ prerequisites: []
 
 ## 步骤
 
-### 1. 用 Obsidian 打开 Vault
+### 1. 打开 Vault
 
-Obsidian → **Open folder as vault** → 选择本仓库的 `content/` 目录。
+**只写作的机器**（推荐）：先把写作仓库 clone 下来，Obsidian 打开**仓库根目录**。
 
-> [!warning] 不要打开仓库根目录
-> 根目录是 Quartz 工程（有 `quartz/`、`node_modules/`），打开它会让 Obsidian 索引整个框架源码。**只打开 `content/`**。
+```bash
+git clone https://gitee.com/MeverikC/ai-garden-contents.git ai-garden-vault
+```
+
+**要跑构建的机器**：Obsidian → **Open folder as vault** → 选站点仓库的 `content/` 目录。
+
+> [!warning] 不要打开站点仓库根目录
+> 根目录是 Quartz 工程（有 `quartz/`、`node_modules/`），打开它会让 Obsidian 索引整个框架源码。
+
+两个仓库的关系和同步机制见 [[ai-garden]]。
 
 ### 2. 确认关键设置
 
@@ -101,6 +109,8 @@ tags: [concept, rag]
 ## 常见坑
 
 > [!warning] 踩坑记录
+> - **换设备后笔记没同步**：两个仓库都是 git 仓库，写完记得 `git push`。或者装 Obsidian 社区插件 **Git**，设成启动自动 pull、定时自动 commit & push。
+> - **多台设备各改各的**：`.obsidian/workspace.json`（当前开的标签页）已 gitignore，不会互相冲。但同一篇笔记在两台设备同时改仍会冲突，先 pull 再写。
 > - **链接在 Quartz 上变红**：Obsidian 用了绝对路径（`/concepts/RAG`），改成 `[[RAG]]`。
 > - **文件名带空格**：URL 会变成 `%20` 或连字符，尽量用中文连写或 `-` 连接，例如 `Claude-Code.md`。
 > - **`templates/` 被发布**：本仓库的 `quartz.config.ts` 已在 `ignorePatterns` 里排除 `templates`、`.obsidian`、`private`。如果改了要同步。
