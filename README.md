@@ -77,27 +77,39 @@ ai-garden/
 
 | 路径 | 是什么 | 能不能用 Obsidian 打开 |
 | --- | --- | --- |
-| `~/Documents/md/ai-garden-vault` | **正式 vault 克隆**（Gitee） | ✅ **就用这个** |
+| `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ai-garden` | **正式 vault**（Gitee 克隆 + iCloud 同步） | ✅ **就用这个** |
+| `~/Documents/md/ai-garden-vault.old-20260917` | 迁到 iCloud 之前的本地克隆，留作备份 | ⚠️ 已弃用，可删 |
 | `~/Documents/md/ai-garden/content/` | 站点仓库里的内容副本 | ⚠️ 是 CI 的产物，改了会被覆盖 |
 | `<站点仓库>/.vault-cache/` | `push-vault.sh` 的缓存仓 | ❌ 脚本会对它 `reset --hard` |
 
-Obsidian 已经注册好 `ai-garden-vault`，打开即用。
+Obsidian 已经注册好 iCloud 里那份 `ai-garden`，打开即用。
 
-### 日常写作（任何设备，包括这台）
+**分工**：iCloud 负责多端同步，Git 只负责发布 —— `.git` 跟着 vault 一起放在 iCloud，但 **git 只在 Mac 上跑**，iOS 端只需要看 iCloud。
+
+### 日常写作
+
+**iPhone / iPad**：Obsidian 打开 iCloud 里的 `ai-garden` 就行，不用装 Git 插件、不用克隆。
+
+**这台 Mac**：Obsidian 打开同一个目录，写完推一次：
 
 ```bash
-git clone https://gitee.com/MeverikC/ai-garden-contents.git ai-garden-vault
-```
-
-Obsidian 打开**仓库根目录**。配置都在仓库里，开箱即用。
-
-```bash
+cd "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/ai-garden"
 git pull && …写… && git add -A && git commit -m "note: …" && git push
 ```
 
 推送后最长 1 小时站点自动重建。
 
-> 装 Obsidian 社区插件 **Git**（自动 pull + 定时 push）可以免敲命令。
+**没有 iCloud 的机器**：照旧克隆写作仓库，Obsidian 打开仓库根目录：
+
+```bash
+git clone https://gitee.com/MeverikC/ai-garden-contents.git ai-garden-vault
+```
+
+> [!warning]
+> 同一篇笔记不要在两处同时改 —— iCloud 同步和 git 是两条独立通道，撞在一起只能手工合。
+
+> [!tip] 别让 macOS 把 vault 里的文件“优化”掉
+> Finder 里对 vault 文件夹右键 → **保留下载**（Keep Downloaded）。否则 iCloud 可能把文件换成占位符，`git` 和 `quartz build` 都会读到空文件。
 
 ### 逃生口：在站点仓库里手改了 content/ 想推回上游
 
@@ -141,7 +153,7 @@ gh secret set GITEE_TOKEN -R Ryn-Mic/ai-garden
 
 ## 用 Obsidian 写作
 
-1. Obsidian → **Open folder as vault** → 选 vault 根目录（本机是 `~/Documents/md/ai-garden-vault`）
+1. Obsidian → **Open folder as vault** → 选 vault 根目录（本机是 `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ai-garden`）
 2. `Cmd/Ctrl + P` → **Insert template** → 选 `概念` / `Agent工具` / `教程` / `对比` / `项目` / `资料`
 3. 用 `[[双链]]` 互连，`Cmd/Ctrl + G` 看图谱
 

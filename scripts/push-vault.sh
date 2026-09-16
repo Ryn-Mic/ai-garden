@@ -5,8 +5,8 @@
 #   ./scripts/push-vault.sh              # 同步并推送
 #   ./scripts/push-vault.sh -n           # 只看会改什么，不提交
 #
-# ⚠️ 这不是日常写作路径。日常写作请在正式 vault 克隆里：
-#      ~/Documents/md/ai-garden-vault   （Obsidian 打开这个）
+# ⚠️ 这不是日常写作路径。日常写作请在正式 vault 里（iCloud）：
+#      ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ai-garden
 #    这个脚本只服务于“在站点仓库里手改了 content/ 想推回上游”的场合。
 #
 # 依赖：git、rsync。首次运行会在 .vault-cache/ 克隆一份 Gitee 仓库（已 gitignore）。
@@ -49,7 +49,7 @@ if [ -d "$CACHE/.git" ]; then
       echo "  2) 改动不要了   → rm -rf \"$CACHE\" 后重跑本脚本"
       echo
       echo "提示：这个目录是脚本的缓存仓，不要用 Obsidian 打开它。"
-      echo "      日常写作请打开正式 vault：~/Documents/md/ai-garden-vault"
+      echo "      日常写作请打开正式 vault：~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ai-garden"
     } >&2
     exit 1
   fi
