@@ -99,6 +99,9 @@ git pull && …写… && git add -A && git commit -m "note: …" && git push
 
 推送后最长 1 小时站点自动重建。
 
+> [!tip] 一行搞定
+> 本机装了 `gpush`（`~/.local/bin/gpush`）：`gpush` = add+commit+push，`gpush -p` 顺带触发站点发布，`gpush -n` 干跑。它会先检查 iCloud 是否还有没下载完的 `.icloud` 占位符。
+
 **没有 iCloud 的机器**：照旧克隆写作仓库，Obsidian 打开仓库根目录：
 
 ```bash
