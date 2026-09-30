@@ -37,7 +37,8 @@ npm run dev             # http://localhost:8080，改 md 自动刷新
 构建产物：
 
 ```bash
-npm run build           # 输出到 public/
+npm run build                    # 输出到 public/
+node scripts/check-content.mjs   # 检查目录、系列、链接、锚点与旧路径跳转
 ```
 
 ## 目录结构
@@ -45,19 +46,20 @@ npm run build           # 输出到 public/
 ```text
 ai-garden/
 ├── content/                    # 内容副本（由 Gitee 同步而来）
-│   ├── index.md                # 网站首页
-│   ├── concepts/               # 核心知识节点（LLM / Transformer / RAG ...）
-│   ├── agents/                 # Agent 产品与框架
-│   ├── tutorials/              # 可复现的操作教程
-│   ├── comparisons/            # 技术选型对比
-│   ├── projects/               # 实战项目与复盘
-│   ├── resources/              # 论文、课程、参考
-│   ├── assets/                 # 图片等附件
+│   ├── index.md                # 首页：从简单任务开始，再按需深入
+│   ├── series/                 # 01～05 有序路线，只引用正文和独立知识点
+│   ├── tutorials/              # basics / software / skills / mcp / development
+│   ├── toolbox/                # Skill / MCP 工具记录（skills / mcp）
+│   ├── concepts/               # 独立知识点，被系列按需引用
+│   ├── research/               # analysis / products / comparisons / papers
+│   ├── maintenance/            # 写作、同步、部署与本站项目记录
+│   ├── assets/                 # 图片、文字材料与练习包
 │   ├── templates/              # Obsidian 模板（不发布）
 │   └── .obsidian/              # Obsidian 配置（随仓库走）
 │
 ├── quartz/                     # Quartz 框架源码
 ├── scripts/push-vault.sh       # 把本地 content/ 推回 Gitee 写作仓库
+├── scripts/check-content.mjs   # 结构与发布链接检查（不代替软件实测）
 ├── .github/workflows/          # CI / 部署
 │   └── deploy.yaml             # 同步 Gitee → 构建 → 发布 Pages（一个工作流包办）
 ├── quartz.config.ts            # 站点主配置（标题 / baseUrl / 主题 / 插件）
@@ -66,6 +68,10 @@ ai-garden/
 ├── package-lock.json
 └── README.md
 ```
+
+**两层组织**：正文按类型只存一份，`series/` 用 `1 → 2 → 3` 排学习顺序，并注明中途补课、选读与每站验收。普通用户先走系列 01，再按需选 Skill / MCP；Agent 与模型研究是技术选修。
+
+旧目录不再保留第二份 Markdown；迁移页面用 `aliases` 兼容旧 URL。新链接使用完整 Vault 路径，避免旧路径别名引起的同名歧义。
 
 > [!NOTE]
 > Quartz 4 的配置文件是 `quartz.config.ts`（TypeScript），不是 `quartz.config.yaml`。
@@ -157,14 +163,14 @@ gh secret set GITEE_TOKEN -R Ryn-Mic/ai-garden
 ## 用 Obsidian 写作
 
 1. Obsidian → **Open folder as vault** → 选 vault 根目录（本机是 `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ai-garden`）
-2. `Cmd/Ctrl + P` → **Insert template** → 选 `概念` / `Agent工具` / `教程` / `对比` / `项目` / `资料`
-3. 用 `[[双链]]` 互连，`Cmd/Ctrl + G` 看图谱
+2. `Cmd/Ctrl + P` → **Insert template** → 按文章类型选择；有序路线使用新增的 `系列` 模板
+3. 用完整 Vault 路径双链互连，例如 `[[concepts/Skill|Skill]]`，`Cmd/Ctrl + G` 看图谱
 
 仓库自带 `.obsidian/` 配置，关键项已和 Quartz 对齐：
 
 | 设置 | 值 | 原因 |
 | --- | --- | --- |
-| New link format | shortest | 对应 Quartz 的 `markdownLinkResolution: "shortest"` |
+| New link format | absolute | 对应 Quartz 的 `markdownLinkResolution: "absolute"`；带路径避免同名与旧别名歧义 |
 | Attachment folder | `assets` | 图片统一存放，路径不炸 |
 | Template folder | `templates` | 已在 `ignorePatterns` 中排除，不发布 |
 
@@ -200,7 +206,9 @@ locale: "zh-CN",
 - 新笔记至少链到 1 个已有节点，且从某个 `index.md` 可达（**防孤岛**）
 - `status` 生命周期：`seedling` → `growing` → `evergreen`
 - 文件名不用空格：`Claude-Code.md` 而不是 `Claude Code.md`
-- 站内链接一律 `[[双链]]`，别写 `/absolute/path`
+- 站内双链使用完整 Vault 路径与显示名，如 `[[concepts/Skill|Skill]]`；不要以 `/` 开头或依赖裸名称
+- 系列用 `sequence` 和 `knowledge_points` 记录主线与补课节点，正文只引用，不复制
+- 发布前执行 `npm run build` 和 `node scripts/check-content.mjs`；迁移内容还需同步回 Gitee 写作源
 
 ## 常用命令
 
@@ -208,6 +216,7 @@ locale: "zh-CN",
 | --- | --- |
 | `npm run dev` | 本地预览，热更新 |
 | `npm run build` | 构建到 `public/` |
+| `node scripts/check-content.mjs` | 检查分类、系列顺序、页面引用、锚点与旧路径跳转 |
 | `npm run check` | 类型检查 + 代码格式检查 |
 | `npm run format` | 格式化（不含 `content/`） |
 | `./scripts/push-vault.sh` | 把 `content/` 推回 Gitee 写作仓库 |

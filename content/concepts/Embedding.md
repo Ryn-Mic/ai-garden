@@ -2,18 +2,24 @@
 title: Embedding
 type: concept
 status: growing
-tags: [concept, retrieval]
+track: research
+audience: developer
+difficulty: advanced
+tags: [concept, retrieval, track/research, level/advanced]
 aliases: [嵌入, 向量化, Vector Embedding]
 ---
 
 # Embedding
+
+> [!info] 阅读定位
+> **进阶研究 · 技术研究**。涉及向量、相似度与检索；建议先了解 [[concepts/RAG|RAG]] 的目标。
 
 > [!abstract] 一句话定义
 > 把文本（或图片、音频）映射成一个固定长度的稠密向量，使**语义相近的对象在向量空间里距离也相近**。
 
 ## 为什么重要
 
-它是「让机器理解相似」的唯一实用手段。整个 [[RAG]] 链路——切分、索引、召回、重排——全都建立在 embedding 之上。
+它是语义检索的常用组件。[[concepts/RAG|RAG]] 可以结合向量、关键词、混合检索与其他排序方式；不是所有环节都必须依赖同一种 embedding，也不必把它视为唯一方案。
 
 ## 核心原理
 
@@ -28,13 +34,13 @@ aliases: [嵌入, 向量化, Vector Embedding]
 | 度量 | 公式直觉 | 说明 |
 | --- | --- | --- |
 | 余弦相似度 | 只看夹角 | 最常用，对长度不敏感 |
-| 点积 | 夹角 × 长度 | 归一化后等价于余弦，[[向量数据库]] 里更快 |
+| 点积 | 夹角 × 长度 | 归一化后等价于余弦，[[concepts/向量数据库|向量数据库]] 里更快 |
 | 欧氏距离 | 直线距离 | 归一化后与余弦单调相关 |
 
 ### 两代技术
 
 1. **稀疏 / 统计**：TF-IDF、BM25 —— 关键词精确匹配强，语义弱
-2. **稠密 / 神经**：基于 [[Transformer]] Encoder 的模型 —— 语义强，但对专有名词、编号常失手
+2. **稠密 / 神经**：基于 [[concepts/Transformer|Transformer]] Encoder 的模型 —— 语义强，但对专有名词、编号常失手
 
 > [!tip] 实践结论
 > 生产系统普遍用 **混合检索**：BM25 + 稠密向量，再上重排模型。单一稠密向量不够。
@@ -50,7 +56,13 @@ aliases: [嵌入, 向量化, Vector Embedding]
 
 ## 相关节点
 
-- 上游：[[Transformer]]
-- 存储与检索：[[向量数据库]]
-- 应用：[[RAG]]、[[构建RAG应用]]
-- 上层概念：[[大语言模型]]
+- 上游：[[concepts/Transformer|Transformer]]
+- 存储与检索：[[concepts/向量数据库|向量数据库]]
+- 应用：[[concepts/RAG|RAG]]、[[tutorials/development/构建RAG应用|构建RAG应用]]
+- 上层概念：[[concepts/大语言模型|大语言模型]]
+
+<!-- series-navigation:start -->
+## 系列导航
+
+- **系列 05 · 3/5 站**：下一站 → [[concepts/RAG|第 4 站]]；[[series/05-模型与RAG基础|查看本系列顺序与补课点]]。
+<!-- series-navigation:end -->

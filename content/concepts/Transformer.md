@@ -2,14 +2,20 @@
 title: Transformer
 type: concept
 status: growing
-tags: [concept, architecture]
+track: research
+audience: developer
+difficulty: advanced
+tags: [concept, architecture, track/research, level/advanced]
 aliases: [Transformer架构, Self-Attention]
 ---
 
 # Transformer
 
+> [!info] 阅读定位
+> **进阶研究 · 技术研究**。涉及注意力与公式；建议了解向量、矩阵和模型基础。
+
 > [!abstract] 一句话定义
-> 2017 年论文 [[Attention-Is-All-You-Need]] 提出的序列建模架构，用**自注意力**替换循环结构，让训练可以完全并行。今天几乎所有 [[大语言模型]] 都是它的变体。
+> 2017 年论文 [[research/papers/Attention-Is-All-You-Need|Attention-Is-All-You-Need]] 提出的序列建模架构，用**自注意力**替换循环结构，让训练可以完全并行。今天几乎所有 [[concepts/大语言模型|大语言模型]] 都是它的变体。
 
 ## 为什么重要
 
@@ -41,7 +47,7 @@ Attention(Q, K, V) = softmax(QKᵀ / √d_k) · V
 
 | 架构 | 注意力 | 代表 | 适合 |
 | --- | --- | --- | --- |
-| Encoder-only | 双向 | BERT | 理解、分类、[[Embedding]] |
+| Encoder-only | 双向 | BERT | 理解、分类、[[concepts/Embedding|Embedding]] |
 | Decoder-only | 因果（单向） | GPT 系列 | 生成 —— 当前主流 |
 | Encoder-Decoder | 交叉 | T5 | 翻译、seq2seq |
 
@@ -57,7 +63,13 @@ Attention(Q, K, V) = softmax(QKᵀ / √d_k) · V
 
 ## 相关节点
 
-- 上层：[[大语言模型]]
-- 输出侧：[[Embedding]]
-- 原始论文：[[Attention-Is-All-You-Need]]
-- 工程影响：[[向量数据库]]（同源的点积/余弦相似度）
+- 上层：[[concepts/大语言模型|大语言模型]]
+- 输出侧：[[concepts/Embedding|Embedding]]
+- 原始论文：[[research/papers/Attention-Is-All-You-Need|Attention-Is-All-You-Need]]
+- 工程影响：[[concepts/向量数据库|向量数据库]]（同源的点积/余弦相似度）
+
+<!-- series-navigation:start -->
+## 系列导航
+
+- **系列 05 · 2/5 站**：下一站 → [[concepts/Embedding|第 3 站]]；[[series/05-模型与RAG基础|查看本系列顺序与补课点]]。
+<!-- series-navigation:end -->

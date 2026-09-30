@@ -1,29 +1,25 @@
 ---
-title: 教程
-description: 可复现的操作步骤
-tags: [moc, tutorials]
+title: 使用教程
+description: 按操作类型收纳教程；有序学习请从系列阅读进入
+tags: [moc, tutorial]
+aliases: [guides/index]
 ---
 
-# 📘 教程
+# 使用教程
 
-只写能跑通的步骤。每一步都带验证方式。
+**这里按“做什么操作”分类，不承担整套课程的阅读顺序。** 第一次来，先走 [[series/01-日常AI入门|日常 AI 入门系列]]。
 
-## 建站
+## 普通用户教程
 
-- [[Quartz部署指南]] — 从零发布这个站
-- [[Obsidian配置指南]] — 让 Vault 和 Quartz 对齐
-- [[多端同步与发布流程]] — 多设备写作不打架，推送到上线全链路
+| 类型 | 入口 | 内容 |
+| --- | --- | --- |
+| 基础练习 | [[tutorials/basics/index|文字、文件与排错]] | 第一个任务、练习材料和结果检查 |
+| 软件使用 | [[tutorials/software/index|软件入口]] | WorkBuddy、Qoder、ChatGPT 的对应操作分支 |
+| Skill 使用 | [[tutorials/skills/index|工作流程与 Skill]] | 不写代码保存流程，按需导入与验收 |
+| MCP 接入 | [[tutorials/mcp/index|外部工具接入]] | 进阶使用，有环境与权限前提 |
 
-## AI 应用
+## 技术实践：单独选读
 
-- [[通用Agent的使用]] — 零代码配置与日常自动化任务实操
-- [[构建RAG应用]] — 最小可用 RAG
+[[tutorials/development/index|开发实践]] 涉及代码与运行环境，不是普通用户教程的下一课。
 
-## 写作规范
-
-> [!tip] 一篇教程合格的三个条件
-> 1. 有明确的前置知识（用 `[[]]` 链出去）
-> 2. 每步有可验证的输出
-> 3. 记录踩过的坑
-
-写新教程用 `templates/教程.md`（Obsidian 里 `Cmd/Ctrl+P` → Insert template）。
+术语解释放在 [[concepts/index|独立知识点]]；工具的用途与选用记录放在 [[toolbox/index|工具记录]]；建站与同步放在 [[maintenance/index|维护与写作]]。

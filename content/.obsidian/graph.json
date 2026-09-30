@@ -15,7 +15,7 @@
       }
     },
     {
-      "query": "path:agents",
+      "query": "path:toolbox",
       "color": {
         "a": 1,
         "rgb": 14701138
@@ -29,21 +29,21 @@
       }
     },
     {
-      "query": "path:comparisons",
+      "query": "path:research",
       "color": {
         "a": 1,
         "rgb": 16175744
       }
     },
     {
-      "query": "path:projects",
+      "query": "path:series",
       "color": {
         "a": 1,
         "rgb": 12838644
       }
     },
     {
-      "query": "path:resources",
+      "query": "path:maintenance",
       "color": {
         "a": 1,
         "rgb": 9807270

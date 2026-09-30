@@ -2,23 +2,29 @@
 title: RAG
 type: concept
 status: growing
-tags: [concept, rag, retrieval]
+track: research
+audience: developer
+difficulty: advanced
+tags: [concept, rag, retrieval, track/research, level/advanced]
 aliases: [检索增强生成, Retrieval-Augmented Generation]
 ---
 
 # RAG
 
+> [!info] 阅读定位
+> **进阶研究 · 技术研究**。检索增强的工程链路；日常提供资料的方法见 [[concepts/AI能看到什么|AI能看到什么]]。
+
 > [!abstract] 一句话定义
-> 在生成之前，先从外部知识库检索相关内容塞进上下文，让 [[大语言模型]] 基于**证据**而不是**记忆**来回答。
+> 在生成之前，先从外部知识库检索相关内容塞进上下文，让 [[concepts/大语言模型|大语言模型]] 基于**证据**而不是**记忆**来回答。
 
 ## 为什么重要
 
-它同时解决 [[大语言模型]] 的两个硬伤：知识过期、无法引用来源。而且**不用训练**，改数据即可生效——这是它相比 [[微调]] 的最大优势。
+它同时解决 [[concepts/大语言模型|大语言模型]] 的两个硬伤：知识过期、无法引用来源。而且**不用训练**，改数据即可生效——这是它相比 [[concepts/微调|微调]] 的最大优势。
 
 ## 核心原理
 
 ```text
-离线：文档 → 切分(chunk) → [[Embedding]] → 写入 [[向量数据库]]
+离线：文档 → 切分(chunk) → [[concepts/Embedding|Embedding]] → 写入 [[concepts/向量数据库|向量数据库]]
 在线：问题 → Embedding → 向量检索 Top-K → (重排) → 拼进 Prompt → LLM → 带引用回答
 ```
 
@@ -40,7 +46,7 @@ aliases: [检索增强生成, Retrieval-Augmented Generation]
 - **查询改写**：多轮对话里先把"它/这个"补全成完整问题
 - **HyDE**：先让模型假装回答，再用假答案去检索
 - **GraphRAG**：用知识图谱补上多跳推理（和本库的双链思路同源）
-- **Agentic RAG**：让 [[Agent]] 自己决定检索几次、检索什么
+- **Agentic RAG**：让 [[concepts/Agent|Agent]] 自己决定检索几次、检索什么
 
 > [!warning] 最常见的三个坑
 > 1. 只看检索指标，不看端到端答案质量
@@ -49,11 +55,17 @@ aliases: [检索增强生成, Retrieval-Augmented Generation]
 
 ## 相关节点
 
-- 组件：[[Embedding]]、[[向量数据库]]、[[上下文工程]]
-- 替代路线：[[微调]]，选型见 [[RAG与微调]]
-- 动手：[[构建RAG应用]]
-- 框架：[[LangChain]]、[[LlamaIndex]]
+- 组件：[[concepts/Embedding|Embedding]]、[[concepts/向量数据库|向量数据库]]、[[concepts/上下文工程|上下文工程]]
+- 替代路线：[[concepts/微调|微调]]，选型见 [[research/comparisons/RAG与微调|RAG与微调]]
+- 动手：[[tutorials/development/构建RAG应用|构建RAG应用]]
+- 框架：[[research/products/LangChain|LangChain]]、[[research/products/LlamaIndex|LlamaIndex]]
 
 ## 参考
 
 - 原始论文：*Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks* (Lewis et al., 2020)
+
+<!-- series-navigation:start -->
+## 系列导航
+
+- **系列 05 · 4/5 站**：下一站 → [[research/comparisons/RAG与微调|第 5 站]]；[[series/05-模型与RAG基础|查看本系列顺序与补课点]]。
+<!-- series-navigation:end -->

@@ -2,11 +2,17 @@
 title: Token
 type: concept
 status: growing
-tags: [concept, basics]
+track: research
+audience: developer
+difficulty: advanced
+tags: [concept, basics, track/research, level/advanced]
 aliases: [分词, Tokenization, 词元]
 ---
 
 # Token
+
+> [!info] 阅读定位
+> **进阶研究 · 技术研究**。分词、上下文长度与成本；不是使用 AI 的前置要求。
 
 > [!abstract] 一句话定义
 > 模型处理文本的最小单位。模型眼里没有"字"和"词"，只有一串 token——**一切输入输出、一切计费、一切长度限制，都以 token 计**。
@@ -16,7 +22,7 @@ aliases: [分词, Tokenization, 词元]
 理解 token 是理解大模型工程成本的第一课，三个后果都直接影响你：
 
 1. **成本按 token 算**。API 报价是"每百万 token 多少钱"，输入和输出分开计（输出通常贵 3–5 倍）。同一个任务，提示里贴一篇没用的长文档，钱就白白烧掉。
-2. **上下文窗口按 token 算**。见 [[大语言模型]]——窗口装不下的内容模型根本"看不见"。而窗口看起来很大（比如 200k），实际有效利用率取决于你放的内容质量，见 [[上下文工程]]。
+2. **上下文窗口按 token 算**。见 [[concepts/大语言模型|大语言模型]]——窗口装不下的内容模型根本"看不见"。而窗口看起来很大（比如 200k），实际有效利用率取决于你放的内容质量，见 [[concepts/上下文工程|上下文工程]]。
 3. **模型看到的第一样东西就是 token**。它读到的不是你写的字，而是切分后的碎片。碎片怎么切，决定了模型对哪些文本天然吃亏。
 
 一个直观例子：同样内容，中文版通常比英文版**更费 token**（1 汉字 ≈ 1–2 token，1 英文单词 ≈ 0.75 token）。所以中文长文的 API 成本和窗口占用经常比英文高 30%–100%。
@@ -30,7 +36,7 @@ aliases: [分词, Tokenization, 词元]
    ↓ 查表得到整数 ID
 [8821, 4467, 2983, 7282]
    ↓ 每个位置查 embedding 矩阵
-4 个向量 → 送进 [[Transformer]] 一层层算 → 预测下一个 token 的概率分布 → [[采样]]
+4 个向量 → 送进 [[concepts/Transformer|Transformer]] 一层层算 → 预测下一个 token 的概率分布 → [[concepts/采样|采样]]
 ```
 
 ### 词表（Vocabulary）是怎么来的
@@ -101,8 +107,17 @@ print(len(tokens), "个 token /", len(text), "个字符")
 
 ## 相关节点
 
-- 上层：[[大语言模型]]——「预测下一个 token」就是它唯一的训练目标
-- 切完之后：[[Embedding]]——token ID 变成语义向量，送入 [[Transformer]]
-- 用 token 计量的资源：[[上下文工程]]（窗口预算）
-- 下游决策：[[采样]]——从 token 概率分布里挑下一个
-- 可靠性关联：[[幻觉]]——生僻内容被拆碎、表征差，是编造的诱因之一
+- 上层：[[concepts/大语言模型|大语言模型]]——「预测下一个 token」就是它唯一的训练目标
+- 切完之后：[[concepts/Embedding|Embedding]]——token ID 变成语义向量，送入 [[concepts/Transformer|Transformer]]
+- 用 token 计量的资源：[[concepts/上下文工程|上下文工程]]（窗口预算）
+- 下游决策：[[concepts/采样|采样]]——从 token 概率分布里挑下一个
+- 可靠性关联：[[concepts/幻觉|幻觉]]——生僻内容被拆碎、表征差，是编造的诱因之一
+
+<!-- series-navigation:start -->
+## 系列导航
+
+同一正文被多条路线或不同章节引用时，按你当前所在的系列与站点继续。
+
+- **系列 04 · 中途知识点**：理解后回到 [[series/04-Agent机制与可靠性|本系列当前站]]。
+- **系列 05 · 中途知识点**：理解后回到 [[series/05-模型与RAG基础|本系列当前站]]。
+<!-- series-navigation:end -->

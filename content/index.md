@@ -1,50 +1,39 @@
 ---
 title: AI Garden
-description: 一个用 Obsidian 写作、Quartz 发布的 AI 知识图谱
+description: 从第一次使用 AI，到复用工作流程，再到工具接入与机制研究
 tags: [moc]
 ---
 
 # 🌱 AI Garden
 
-一个持续生长的 AI 知识图谱。左侧目录是骨架，每篇笔记底部的**关系图谱**是神经——鼠标悬停节点能看到标题，点击直接跳过去。
+**先做成一个小任务，再学会复用；需要时才接工具、研究原理。**
 
-> [!tip] 怎么读
-> 从任意一个节点进去，跟着 `[[双链]]` 走。没有"官方顺序"，只有你自己的路径。
+> [!tip] 第一次来，从这里开始
+> 打开 **[[series/01-日常AI入门|系列 01：日常 AI 入门]]**。
+> 顺序是：做一次文字任务 → 找到自己软件的入口 → 试读一个文件 → 学会核对与排错。
+> 不需要编程，也不用先安装 Skill、MCP 或阅读论文。
 
-## 入口
+## 从简单到深入，按需要往下走
 
-- 🧠 **[[concepts/index|核心概念]]** — 必须先懂的底层节点：[[大语言模型]]、[[Transformer]]、[[Embedding]]、[[提示工程]]
-- 🤖 **[[agents/index|Agent 与工具]]** — 产品与框架：[[LangChain]]、[[LlamaIndex]]、[[Dify]]、[[Claude-Code|Claude Code]]
-- 📘 **[[tutorials/index|教程]]** — 手把手：[[Quartz部署指南]]、[[Obsidian配置指南]]、[[构建RAG应用]]
-- ⚖️ **[[comparisons/index|技术选型]]** — [[RAG与微调]]、[[Agent框架对比]]
-- 🚀 **[[projects/index|实战项目]]** — [[ai-garden]] 就是这个库本身
-- 📚 **[[resources/index|资料库]]** — [[Attention-Is-All-You-Need|Transformer 原论文]]、[[学习路线]]
+1. **[[series/01-日常AI入门|日常 AI 入门]]**：把文字或文件整理成可核对的结果。
+2. **[[series/02-把工作流程变成Skill|把工作流程变成 Skill]]**：先保存工作说明，再按需安装、加载和验收。
+3. **[[series/03-连接外部工具MCP|连接外部工具 MCP]]**：确实缺少外部读取能力时再学；需要运行环境。
+4. **[[series/04-Agent机制与可靠性|Agent 机制与可靠性]]**：面向进阶读者，研究上下文、技能加载和工具调用。
+5. **[[series/05-模型与RAG基础|模型与 RAG 基础]]**：面向技术读者，了解模型、检索与应用构建。
 
-## 三个主干
+**不用把五条路线都读完。** 第 1 条可以独立完成；第 2、3 条按需求扩展；第 4、5 条是两条可独立选择的技术路线。
 
-```text
-大语言模型 ──→ Transformer ──→ Embedding ──→ 向量数据库
-     │                                          │
-     └──→ 提示工程 ──→ Agent ──→ MCP             │
-                          │                     │
-                          └────→ RAG ←──────────┘
-                                   │
-                             RAG与微调（选型）
-```
+每条系列都标明 `1 → 2 → 3` 的主线、途中需要补的知识点，以及每一站的完成标准。
 
-## 这个库怎么长出来的
+## 已知道要找什么，按类型查
 
-| 层 | 用什么 | 说明 |
+| 内容类型 | 入口 | 这里放什么 |
 | --- | --- | --- |
-| 写作 | Obsidian | 本地 Markdown + 双链 |
-| 存放 | `content/` | 就是 Obsidian Vault |
-| 构建 | [Quartz](https://github.com/jackyzha0/quartz) | Markdown → 静态站点 + 图谱 |
-| 托管 | GitHub → GitHub Pages / Cloudflare Pages | push 即发布 |
+| 使用教程 | [[tutorials/index|教程目录]] | 操作步骤、材料、预期结果与排错 |
+| 工具记录 | [[toolbox/index|工具目录]] | Skill / MCP 的用途、来源、成本和边界 |
+| 独立知识点 | [[concepts/index|知识点目录]] | 遇到术语或问题时单独查，不必从头读完 |
+| 深入研究 | [[research/index|研究目录]] | 机制分析、产品与框架、选型和论文 |
 
-细节见 [[ai-garden]]。
+**正文按类型存一份，学习顺序放在 [[series/index|系列目录]]。** 同一知识点可以被多条系列引用。
 
-## 状态说明
-
-- 🌱 `seedling` 刚记下，还没验证
-- 🌿 `growing` 有结构，还在补
-- 🌳 `evergreen` 稳定可引用
+[[maintenance/index|维护与写作]] 是作者入口，不是 AI 入门必修。内容成熟度、阅读难度与实测状态分别标注；文档整理不等于软件实测。
