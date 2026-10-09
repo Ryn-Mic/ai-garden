@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Prompt 工程最佳实践",
+    "locale": "zh-CN",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    { "id": "basic", "label": "基础流程" },
+    { "id": "advanced", "label": "进阶技巧", "variant": "exception" }
+  ],
+  "mainPath": ["define", "context", "format", "test", "evaluate"],
+  "nodes": [
+    { "id": "define", "lane": "basic", "col": 0, "type": "external", "label": "明确任务", "sublabel": "清晰目标", "width": 130 },
+    { "id": "context", "lane": "basic", "col": 1, "type": "backend", "label": "提供上下文", "sublabel": "背景与约束", "width": 130 },
+    { "id": "format", "lane": "basic", "col": 2, "type": "backend", "label": "指定格式", "sublabel": "输出结构", "width": 130 },
+    { "id": "test", "lane": "basic", "col": 3, "type": "cloud", "label": "测试输出", "sublabel": "运行验证", "width": 130 },
+    { "id": "evaluate", "lane": "basic", "col": 4, "type": "backend", "label": "评估结果", "sublabel": "质量检查", "width": 130 },
+
+    { "id": "cot", "lane": "advanced", "col": 2, "type": "messagebus", "label": "思维链", "sublabel": "CoT 推理", "tag": "复杂任务", "width": 130 },
+    { "id": "role", "lane": "advanced", "col": 3, "type": "messagebus", "label": "角色扮演", "sublabel": "专家视角", "width": 130 }
+  ],
+  "edges": [
+    { "from": "define", "to": "context", "label": "定义目标", "variant": "emphasis" },
+    { "from": "context", "to": "format", "label": "添加约束", "variant": "emphasis" },
+    { "from": "format", "to": "test", "label": "生成 Prompt", "variant": "emphasis" },
+    { "from": "test", "to": "evaluate", "label": "检查输出", "variant": "emphasis" },
+    { "from": "evaluate", "to": "context", "label": "迭代优化", "variant": "dashed", "role": "branch" },
+
+    { "from": "format", "to": "cot", "label": "需要推理", "variant": "dashed", "role": "branch" },
+    { "from": "cot", "to": "role", "label": "设定角色", "variant": "dashed" },
+    { "from": "role", "to": "test", "label": "应用技巧", "variant": "dashed" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "基础要素",
+      "items": [
+        "清晰的任务描述和期望输出",
+        "必要的背景信息和约束条件",
+        "明确的输出格式要求（JSON/Markdown/文本）"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "进阶技巧",
+      "items": [
+        "思维链（CoT）：让模型展示推理过程",
+        "角色扮演：分配专家角色提升质量",
+        "Few-shot：提供示例引导输出格式"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "评估标准",
+      "items": [
+        "准确性：回答是否正确和相关",
+        "一致性：多次运行结果是否稳定",
+        "格式：是否符合指定的输出结构"
+      ]
+    }
+  ]
+}

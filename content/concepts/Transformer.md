@@ -25,6 +25,8 @@ aliases: [Transformer架构, Self-Attention]
 
 ## 核心原理
 
+<iframe src="transformer-arch.html" width="100%" height="750" frameborder="0" style="border: 1px solid #e5e7eb; border-radius: 8px;"></iframe>
+
 ### 自注意力（Self-Attention）
 
 每个 token 生成 Query / Key / Value 三个向量：

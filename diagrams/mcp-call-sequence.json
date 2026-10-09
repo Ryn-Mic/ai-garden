@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "MCP 调用链路",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "viewBox": [900, 650],
+    "legend": {
+      "mode": "hidden"
+    }
+  },
+  "participants": [
+    { "id": "user", "type": "external", "label": "用户", "sublabel": "发起请求" },
+    { "id": "app", "type": "frontend", "label": "AI 应用", "sublabel": "Claude Code" },
+    { "id": "ai", "type": "backend", "label": "AI 模型", "sublabel": "分析与决策" },
+    { "id": "mcp_client", "type": "backend", "label": "MCP Client", "sublabel": "协议实现" },
+    { "id": "mcp_server", "type": "backend", "label": "MCP Server", "sublabel": "工具服务" },
+    { "id": "resource", "type": "database", "label": "外部资源", "sublabel": "数据源" }
+  ],
+  "segments": [
+    { "from": 150, "to": 265, "label": "初始化阶段" },
+    { "from": 290, "to": 560, "label": "任务执行阶段" }
+  ],
+  "messages": [
+    { "id": "startup", "from": "app", "to": "mcp_client", "y": 168, "label": "启动时读取配置", "variant": "default" },
+    { "id": "connect", "from": "mcp_client", "to": "mcp_server", "y": 195, "label": "建立连接", "variant": "emphasis" },
+    { "id": "list_tools", "from": "mcp_server", "to": "mcp_client", "y": 225, "label": "返回工具列表", "variant": "return" },
+    { "id": "ready", "from": "mcp_client", "to": "app", "y": 250, "label": "连接就绪", "variant": "return" },
+
+    { "id": "user_request", "from": "user", "to": "app", "y": 305, "label": "总结这个网页", "variant": "default" },
+    { "id": "analyze", "from": "app", "to": "ai", "y": 335, "label": "分析任务", "variant": "emphasis" },
+    { "id": "decide_tool", "from": "ai", "to": "app", "y": 365, "label": "决策: 需要 web-reader", "variant": "return" },
+    { "id": "request_tool", "from": "app", "to": "mcp_client", "y": 400, "label": "调用工具 (JSON-RPC)", "variant": "emphasis" },
+    { "id": "forward", "from": "mcp_client", "to": "mcp_server", "y": 430, "label": "转发请求", "variant": "emphasis" },
+    { "id": "execute", "from": "mcp_server", "to": "resource", "y": 460, "label": "执行操作", "variant": "default" },
+    { "id": "data", "from": "resource", "to": "mcp_server", "y": 490, "label": "返回数据", "variant": "return" },
+    { "id": "result", "from": "mcp_server", "to": "mcp_client", "y": 515, "label": "工具执行结果", "variant": "return" },
+    { "id": "context", "from": "mcp_client", "to": "ai", "y": 538, "label": "结果进入上下文", "variant": "return" },
+    { "id": "generate", "from": "ai", "to": "app", "y": 545, "label": "生成回答", "variant": "return" },
+    { "id": "response", "from": "app", "to": "user", "y": 567, "label": "返回答案", "variant": "return" }
+  ],
+  "activations": [
+    { "participant": "app", "from": 163, "to": 255, "type": "frontend" },
+    { "participant": "mcp_client", "from": 168, "to": 250, "type": "backend" },
+    { "participant": "mcp_server", "from": 190, "to": 230, "type": "backend" },
+
+    { "participant": "app", "from": 300, "to": 572, "type": "frontend" },
+    { "participant": "ai", "from": 330, "to": 550, "type": "backend" },
+    { "participant": "mcp_client", "from": 395, "to": 543, "type": "backend" },
+    { "participant": "mcp_server", "from": 425, "to": 520, "type": "backend" },
+    { "participant": "resource", "from": 455, "to": 495, "type": "database" }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "MCP 调用机制",
+      "items": [
+        "初始化：应用启动时建立连接，获取工具列表",
+        "任务执行：AI 分析→选择工具→MCP协议转换→实际执行",
+        "结果返回：数据进入上下文→AI生成回答→返回用户"
+      ]
+    }
+  ]
+}
