@@ -26,7 +26,7 @@ aliases: [检索增强生成, Retrieval-Augmented Generation]
 ### 完整流程图
 
 <iframe 
-  src="../diagrams/rag-pipeline.html" 
+  src="/assets/rag-pipeline-flow.html" 
   width="100%" 
   height="700px" 
   style="border: 1px solid var(--gray); border-radius: 8px; margin: 2rem 0;"
