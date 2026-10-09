@@ -18,8 +18,6 @@ aliases: [Model Context Protocol, 模型上下文协议]
 
 你让 AI 总结某个网页。它能写摘要，却可能没有打开网页的能力，只能根据链接或标题猜内容。
 
-<iframe src="/diagrams/mcp-architecture.html" width="100%" height="600" frameborder="0" style="border: 1px solid #e5e7eb; border-radius: 8px;"></iframe>
-
 一种解决办法是让你正在用的 AI 应用接入一个网页读取工具。**MCP（模型上下文协议）就是应用与这类外部工具通信的一种标准方式**。
 
 它像统一插口，但不是某一个插件，也不是”装上以后就什么都能做”。

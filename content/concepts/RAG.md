@@ -23,24 +23,6 @@ aliases: [检索增强生成, Retrieval-Augmented Generation]
 
 ## 核心原理
 
-### 完整流程图
-
-<iframe 
-  src="../diagrams/rag-pipeline.html" 
-  width="100%" 
-  height="700px" 
-  style="border: 1px solid var(--gray); border-radius: 8px; margin: 2rem 0;"
-  title="RAG 检索增强生成流程图"
-></iframe>
-
-> [!tip] 交互功能
-> - **缩放**：滚轮缩放，或点击图表右下角的 +/- 按钮
-> - **搜索**：点击右上角的搜索图标，输入关键词快速定位
-> - **主题切换**：点击右上角的月亮/太阳图标切换明暗主题
-> - **关注流程**：点击节点或连线可以高亮相关路径
-
-### 文字说明
-
 ```text
 离线：文档 → 切分(chunk) → [[concepts/Embedding|Embedding]] → 写入 [[concepts/向量数据库|向量数据库]]
 在线：问题 → Embedding → 向量检索 Top-K → (重排) → 拼进 Prompt → LLM → 带引用回答

@@ -25,10 +25,6 @@ aliases: ["research/MCP的接入与调用机制"]
 
 ## 参与者：应用不是模型本身
 
-<iframe src="/diagrams/mcp-call-sequence.html" width="100%" height="800" frameborder="0" style="border: 1px solid #ddd; border-radius: 8px;"></iframe>
-
-*MCP 完整调用链路：从用户请求到最终响应的时序图*
-
 ```text
 用户
   ↓ 任务与授权

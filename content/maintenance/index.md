@@ -17,7 +17,6 @@ aliases: [resources/维护与写作, resources/index, projects/index]
 
 ## 站点维护
 
-- [[maintenance/publishing-flow|AI Garden 发布流程]]：**交互式流程图** - 从 Obsidian 写作到 GitHub Pages 发布的完整流程。
 - [[maintenance/Obsidian配置指南|Obsidian 配置指南]]：打开 Vault、模板与写作设置。
 - [[maintenance/多端同步与发布流程|多端同步与发布流程]]：Gitee 写作源、内容副本与发布的关系。
 - [[maintenance/Quartz部署指南|Quartz 部署指南]]：构建与部署，需要 Node.js / Git 环境。
