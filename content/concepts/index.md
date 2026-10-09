@@ -26,6 +26,5 @@ tags: [moc, concept]
 - **生成与可靠性**：[[concepts/采样|采样]] · [[concepts/幻觉|幻觉]]。
 - **检索与扩展**：[[concepts/Embedding|Embedding]] · [[concepts/向量数据库|向量数据库]] · [[concepts/RAG|RAG]] · [[concepts/微调|微调]]。
 - **任务与信息组织**：[[concepts/Agent|Agent]] · [[concepts/提示工程|提示工程]] · [[concepts/上下文工程|上下文工程]]。
-- **成本与优化**：[[concepts/成本优化|成本优化]]。
 
 这部分含实现、代码或模型术语，前提见各篇阅读定位。有序研究从 [[series/04-Agent机制与可靠性|系列 04]] 或 [[series/05-模型与RAG基础|系列 05]] 进入。
