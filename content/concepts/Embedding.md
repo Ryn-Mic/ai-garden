@@ -23,6 +23,8 @@ aliases: [嵌入, 向量化, Vector Embedding]
 
 ## 核心原理
 
+<iframe src="embedding-flow.html" width="100%" height="650" frameborder="0"></iframe>
+
 ```text
 "猫"        → [0.21, -0.43, 0.88, ...]
 "小猫"      → [0.19, -0.40, 0.85, ...]   ← 距离近
