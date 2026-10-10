@@ -8,6 +8,8 @@ import {
   simplifySlug,
   splitAnchor,
   transformLink,
+  transformAssetLink,
+  slugifyAssetPath,
 } from "../../util/path"
 import path from "path"
 import { visit } from "unist-util-visit"
@@ -37,6 +39,9 @@ export const CrawlLinks: QuartzTransformerPlugin<Partial<Options>> = (userOpts) 
   return {
     name: "LinkProcessing",
     htmlPlugins(ctx) {
+      const htmlAssets = new Set(
+        ctx.allFiles.filter((fp) => fp.endsWith(".html")).map(slugifyAssetPath),
+      )
       return [
         () => {
           return (tree: Root, file) => {
@@ -103,6 +108,22 @@ export const CrawlLinks: QuartzTransformerPlugin<Partial<Options>> = (userOpts) 
                   isAbsoluteUrl(dest, { httpOnly: false }) || dest.startsWith("#")
                 )
                 if (isInternal) {
+                  const assetDest = transformAssetLink(file.data.slug!, dest, transformOptions)
+                  const assetUrl = new URL(
+                    assetDest,
+                    "https://base.com/" + stripSlashes(curSlug, true),
+                  )
+                  const assetSlug = decodeURIComponent(
+                    stripSlashes(assetUrl.pathname, true),
+                  ) as FullSlug
+                  if (htmlAssets.has(assetSlug)) {
+                    node.properties.href = assetDest
+                    // Standalone viewers are full documents, not Quartz SPA pages or popovers.
+                    node.properties["data-router-ignore"] = "true"
+                    node.properties["data-no-popover"] = "true"
+                    return
+                  }
+
                   dest = node.properties.href = transformLink(
                     file.data.slug!,
                     dest,
@@ -148,13 +169,12 @@ export const CrawlLinks: QuartzTransformerPlugin<Partial<Options>> = (userOpts) 
                 }
 
                 if (!isAbsoluteUrl(node.properties.src, { httpOnly: false })) {
-                  let dest = node.properties.src as RelativeURL
-                  dest = node.properties.src = transformLink(
+                  const transform = node.tagName === "iframe" ? transformAssetLink : transformLink
+                  node.properties.src = transform(
                     file.data.slug!,
-                    dest,
+                    node.properties.src,
                     transformOptions,
                   )
-                  node.properties.src = dest
                 }
               }
             })

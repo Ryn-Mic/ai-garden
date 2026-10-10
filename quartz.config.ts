@@ -15,7 +15,7 @@ const config: QuartzConfig = {
     analytics: null,
     locale: "zh-CN",
     baseUrl: "Ryn-Mic.github.io/ai-garden",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", "**/*.visual-check.*"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",

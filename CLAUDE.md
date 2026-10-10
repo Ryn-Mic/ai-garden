@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 AI Garden is a personal AI knowledge base built with **Obsidian** for writing and **Quartz 4** for publishing as a static site with backlinks, graph view, and full-text search.
 
 **Two-repository architecture:**
+
 - **Writing repository** (Gitee `MeverikC/ai-garden-contents`): Content-only repository optimized for fast multi-device sync in China. This is the single source of truth. Vault root = repository root.
 - **Site repository** (this repository): Quartz engine + content copy + CI/CD. Content in `content/` is synced from Gitee via GitHub Actions.
 
@@ -68,10 +69,12 @@ ai-garden/
 ### Content Organization
 
 **Two-layer structure:**
+
 1. **Primary content** lives in type-based directories (`tutorials/`, `toolbox/`, `concepts/`, `research/`)
 2. **Learning sequences** in `series/` reference primary content with `1 → 2 → 3` ordering
 
 Each series specifies:
+
 - `sequence`: ordered array of main-path documents
 - `knowledge_points`: supplementary concept nodes for fill-in learning
 - Station headings (`### 1.`, `### 2.`, etc.) that match sequence indices
@@ -81,6 +84,7 @@ Each series specifies:
 ### Sync Mechanism
 
 `.github/workflows/deploy.yaml` triggers on:
+
 - Push to `main` branch
 - Hourly cron (`17 * * * *`)
 - Manual `workflow_dispatch`
@@ -103,23 +107,25 @@ Gitee fetch failures emit warnings but don't block builds — existing `content/
 ### Critical Settings Already Set
 
 `quartz.config.ts`:
+
 - `baseUrl: "Ryn-Mic.github.io/ai-garden"` — matches GitHub Pages project site
 - `locale: "zh-CN"` — Chinese language site
 - `ignorePatterns: ["private", "templates", ".obsidian"]` — excludes non-content
 - `markdownLinkResolution: "absolute"` — matches Obsidian absolute link format
 
 Obsidian (`.obsidian/app.json`):
+
 - New link format: `absolute` (full vault paths)
 - Attachment folder: `assets`
 - Template folder: `templates`
 
 ### When Changing Deployment Target
 
-| Target | baseUrl value |
-|--------|--------------|
-| GitHub Pages project site | `username.github.io/repo-name` |
-| GitHub Pages user site | `username.github.io` |
-| Custom domain | `your.domain.com` (no protocol, no trailing slash) |
+| Target                    | baseUrl value                                      |
+| ------------------------- | -------------------------------------------------- |
+| GitHub Pages project site | `username.github.io/repo-name`                     |
+| GitHub Pages user site    | `username.github.io`                               |
+| Custom domain             | `your.domain.com` (no protocol, no trailing slash) |
 
 ## Content Standards
 
@@ -140,10 +146,12 @@ status: seedling | growing | evergreen
 ```
 
 Required tag patterns:
+
 - `track/<track-value>` (e.g., `track/toolbox`)
 - `level/<difficulty>` (e.g., `level/beginner`)
 
 Required admonition in content body:
+
 ```markdown
 > [!info] 阅读定位
 > (Visible reading level description)
@@ -154,6 +162,7 @@ Required admonition in content body:
 - Use **complete vault paths** with display text: `[[concepts/Skill|Skill]]`
 - Do NOT use leading slashes or bare names (causes disambiguation issues with old aliases)
 - Assets: `[[assets/image.png]]`
+- Interactive HTML diagrams: keep the HTML in the **writing vault** and use a complete vault path with straight quotes, e.g. `<iframe src="assets/diagram.html" title="Diagram"></iframe>`. Do not use a bare filename or a site-root URL. Quartz preserves `.html` for these assets and iframe URLs so GitHub Pages serves `text/html`. Run the full content validator to catch missing iframe targets before publishing.
 - Anchors: `[[tutorials/basics/first-task#section|Section]]`
 
 ### Series Navigation
@@ -162,7 +171,9 @@ Pages referenced by series must include bidirectional navigation:
 
 ```markdown
 <!-- series-navigation:start -->
+
 ← [[series/01-日常AI入门|返回系列 01]] | [[series/02-把工作流程变成Skill|下一系列]] →
+
 <!-- series-navigation:end -->
 ```
 
@@ -206,6 +217,7 @@ Run validation before committing content changes: `npm run build && node scripts
 **DO NOT edit `content/` in this repository.** Edit in the Obsidian vault instead:
 
 **On Mac:**
+
 ```bash
 cd "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/ai-garden"
 # Edit in Obsidian
@@ -215,6 +227,7 @@ git add -A && git commit -m "note: description" && git push
 The site rebuilds automatically within 1 hour. For immediate publish: `gh workflow run deploy.yaml -R Ryn-Mic/ai-garden`
 
 **On non-iCloud machines:**
+
 ```bash
 git clone https://gitee.com/MeverikC/ai-garden-contents.git ai-garden-vault
 # Open in Obsidian, edit, commit, push

@@ -18,7 +18,7 @@ tags: [project, workflow, publishing, track/meta, level/beginner]
 下方是完整的发布流程图，支持缩放、搜索和主题切换：
 
 <iframe 
-  src="/assets/ai-garden-publish-flow.html" 
+  src="assets/ai-garden-publish-flow.html"
   width="100%" 
   height="750px" 
   style="border: 1px solid var(--gray); border-radius: 8px; margin: 2rem 0;"

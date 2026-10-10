@@ -92,16 +92,25 @@ export function simplifySlug(fp: FullSlug): SimpleSlug {
   return (res.length === 0 ? "/" : res) as SimpleSlug
 }
 
-export function transformInternalLink(link: string): RelativeURL {
+/** Non-Markdown assets must keep .html so static hosts serve them as HTML. */
+export function slugifyAssetPath(fp: FilePath): FullSlug {
+  const slug = slugifyFilePath(fp)
+  return (fp.endsWith(".html") ? slug + ".html" : slug) as FullSlug
+}
+
+export function transformInternalLink(link: string, preserveHtmlExtension = false): RelativeURL {
   let [fplike, anchor] = splitAnchor(decodeURI(link))
 
-  const folderPath = isFolderPath(fplike)
+  const folderPath = isFolderPath(fplike) && !(preserveHtmlExtension && fplike.endsWith(".html"))
   let segments = fplike.split("/").filter((x) => x.length > 0)
   let prefix = segments.filter(isRelativeSegment).join("/")
   let fp = segments.filter((seg) => !isRelativeSegment(seg) && seg !== "").join("/")
 
   // manually add ext here as we want to not strip 'index' if it has an extension
-  const simpleSlug = simplifySlug(slugifyFilePath(fp as FilePath))
+  const fullSlug = preserveHtmlExtension
+    ? slugifyAssetPath(fp as FilePath)
+    : slugifyFilePath(fp as FilePath)
+  const simpleSlug = simplifySlug(fullSlug)
   const joined = joinSegments(stripSlashes(prefix), stripSlashes(simpleSlug))
   const trail = folderPath ? "/" : ""
   const res = (_addRelativeToStart(joined) + trail + anchor) as RelativeURL
@@ -112,7 +121,7 @@ export function transformInternalLink(link: string): RelativeURL {
 // https://github.com/natemoo-re/micromorph/blob/main/src/utils.ts#L5
 const _rebaseHtmlElement = (el: Element, attr: string, newBase: string | URL) => {
   const rebased = new URL(el.getAttribute(attr)!, newBase)
-  el.setAttribute(attr, rebased.pathname + rebased.hash)
+  el.setAttribute(attr, rebased.pathname + rebased.search + rebased.hash)
 }
 export function normalizeRelativeURLs(el: Element | Document, destination: string | URL) {
   el.querySelectorAll('[href=""], [href^="./"], [href^="../"]').forEach((item) =>
@@ -130,7 +139,10 @@ const _rebaseHastElement = (
   newBase: FullSlug,
 ) => {
   if (el.properties?.[attr]) {
-    if (!isRelativeURL(String(el.properties[attr]))) {
+    const value = String(el.properties[attr])
+    const htmlAsset = el.tagName === "iframe" || el.properties["data-router-ignore"] !== undefined
+    const relativeHtmlAsset = htmlAsset && /^\.{1,2}\//.test(value)
+    if (!isRelativeURL(value) && !relativeHtmlAsset) {
       return
     }
 
@@ -224,15 +236,17 @@ export function getAllSegmentPrefixes(tags: string): string[] {
 export interface TransformOptions {
   strategy: "absolute" | "relative" | "shortest"
   allSlugs: FullSlug[]
+  preserveHtmlExtension?: boolean
 }
 
 export function transformLink(src: FullSlug, target: string, opts: TransformOptions): RelativeURL {
-  let targetSlug = transformInternalLink(target)
+  let targetSlug = transformInternalLink(target, opts.preserveHtmlExtension)
 
   if (opts.strategy === "relative") {
     return targetSlug as RelativeURL
   } else {
-    const folderTail = isFolderPath(targetSlug) ? "/" : ""
+    const htmlAsset = opts.preserveHtmlExtension && targetSlug.endsWith(".html")
+    const folderTail = isFolderPath(targetSlug) && !htmlAsset ? "/" : ""
     const canonicalSlug = stripSlashes(targetSlug.slice(".".length))
     let [targetCanonical, targetAnchor] = splitAnchor(canonicalSlug)
 
@@ -254,6 +268,14 @@ export function transformLink(src: FullSlug, target: string, opts: TransformOpti
     // if it's not unique, then it's the absolute path from the vault root
     return (joinSegments(pathToRoot(src), canonicalSlug) + folderTail) as RelativeURL
   }
+}
+
+/** Keep standalone HTML embeds, query strings, and viewer fragments intact. */
+export function transformAssetLink(src: FullSlug, target: string, opts: TransformOptions): string {
+  const suffixStart = target.search(/[?#]/)
+  const pathname = suffixStart === -1 ? target : target.slice(0, suffixStart)
+  const suffix = suffixStart === -1 ? "" : target.slice(suffixStart)
+  return transformLink(src, pathname, { ...opts, preserveHtmlExtension: true }) + suffix
 }
 
 // path helpers

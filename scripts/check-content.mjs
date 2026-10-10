@@ -184,7 +184,11 @@ if (!process.argv.includes("--source-only")) {
           if (props.id) ids.add(String(props.id))
           if (node.tagName === "a" && props.name) ids.add(String(props.name))
           const ref =
-            node.tagName === "a" ? props.href : node.tagName === "img" ? props.src : undefined
+            node.tagName === "a"
+              ? props.href
+              : ["img", "iframe"].includes(node.tagName)
+                ? props.src
+                : undefined
           if (ref !== undefined) refs.push(String(ref))
           if (node.tagName === "meta" && String(props.httpEquiv).toLowerCase() === "refresh") {
             refresh = String(props.content).match(/^\s*\d+\s*;\s*url=(.*)$/i)?.[1]
@@ -261,7 +265,8 @@ if (!process.argv.includes("--source-only")) {
         errors.push(`${alias}: redirect does not reach ${slug}`)
     }
     const assets = walk(path.join(content, "assets"), "").filter(
-      (file) => !path.basename(file).startsWith("."),
+      (file) =>
+        !path.basename(file).startsWith(".") && !path.basename(file).includes(".visual-check."),
     )
     for (const file of assets) {
       const published = path.join(output, path.relative(content, file))
@@ -276,7 +281,7 @@ console.log(
 )
 if (pageCount)
   console.log(
-    `Generated checks: ${pageCount} HTML pages, ${internal} internal links/images, ${anchors} anchors; redirects and assets checked`,
+    `Generated checks: ${pageCount} HTML pages, ${internal} internal links/images/iframes, ${anchors} anchors; redirects and assets checked`,
   )
 for (const error of errors.slice(0, 15)) console.error(error)
 if (errors.length > 15) console.error(`… ${errors.length - 15} additional errors`)

@@ -107,8 +107,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Test publishing behavior
+        run: npm test
+
       - name: Build Quartz
         run: npx quartz build
+
+      - name: Validate content, embeds, and published assets
+        run: node scripts/check-content.mjs
 
       # ---------------------------------------------------------------- 部署
       - name: Upload artifact

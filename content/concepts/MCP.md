@@ -85,7 +85,7 @@ MCP 不是一个具体的工具，而是一套**通信协议**。要理解几个
 
 ### 完整的调用链路
 
-<iframe src=”/assets/mcp-call-sequence.html” width=”100%” height=”600” frameborder=”0”></iframe>
+<iframe src="assets/mcp-call-sequence.html" width="100%" height="600" frameborder="0" title="MCP 调用链路"></iframe>
 
 ```
 你：”总结这个网页的内容”

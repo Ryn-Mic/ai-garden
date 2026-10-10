@@ -59,7 +59,7 @@ Agent 做的，是围绕目标、工具与反馈组织执行，给模型配上�
 
 一个 Agent 系统 = **模型 + 工具 + 循环 + 记忆 + 停止条件**。五个词缺一不可，少一个都会翻车，下面挨个拆开讲。
 
-<iframe src="/diagrams/agent-lifecycle.html" width="100%" height="600" frameborder="0" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></iframe>
+<iframe src="assets/agent-lifecycle.html" width="100%" height="600" frameborder="0" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></iframe>
 
 > **图：Agent 执行生命周期** —— 从待命到完成的完整状态转换，包含主循环、失败路径和恢复机制。
 
