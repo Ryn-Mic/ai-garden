@@ -41,6 +41,16 @@ aliases: ["toolbox/网页读取MCP"]
 
 有些客户端提供图形化配置，有些需要技术协作。**本文不提供猜测的远程服务地址，也不要求普通用户为了做一次摘要先学服务端开发。**
 
+<!-- archify:fetch-evidence:start -->
+### 网页读取与内容验收链路
+
+Fetch 获取指定 URL 的可获取正文，不是搜索引擎，也不是可以点击和登录的完整浏览器。
+
+<iframe src="assets/diagrams/fetch-evidence.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="Fetch MCP：以实际正文证明一次网页读取"></iframe>
+
+[单独打开图表](assets/diagrams/fetch-evidence.html)
+<!-- archify:fetch-evidence:end -->
+
 ## 配好后，做一次公开网页测试
 
 ### 1. 指定一个公开、非敏感的 URL

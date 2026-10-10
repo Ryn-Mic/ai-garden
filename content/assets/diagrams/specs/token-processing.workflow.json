@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Token：文本如何进入模型计算",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "文本与分词"
+    },
+    {
+      "id": "stage1",
+      "label": "模型计算与生成"
+    }
+  ],
+  "mainPath": [
+    "text",
+    "split",
+    "ids",
+    "embed",
+    "model",
+    "sample"
+  ],
+  "nodes": [
+    {
+      "id": "text",
+      "type": "frontend",
+      "label": "提供输入文本",
+      "sublabel": "文字、代码与对话标记",
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "split",
+      "type": "backend",
+      "label": "按词表切分",
+      "sublabel": "结果取决于 tokenizer",
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "ids",
+      "type": "database",
+      "label": "映射 Token ID",
+      "sublabel": "每个片段对应整数编号",
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "embed",
+      "type": "backend",
+      "label": "查 Embedding",
+      "sublabel": "将 ID 转成向量表示",
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "model",
+      "type": "backend",
+      "label": "执行模型计算",
+      "sublabel": "预测下一 Token 的分布",
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "sample",
+      "type": "messagebus",
+      "label": "采样并继续生成",
+      "sublabel": "输入输出都按 Token 计量",
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "text",
+      "to": "split"
+    },
+    {
+      "from": "split",
+      "to": "ids"
+    },
+    {
+      "from": "ids",
+      "to": "embed"
+    },
+    {
+      "from": "embed",
+      "to": "model"
+    },
+    {
+      "from": "model",
+      "to": "sample"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "Token 数不等于字数；不同模型的词表与切分结果可能不同",
+        "成本与窗口占用要实际计量，不能把中英文经验换算当精确结果"
+      ]
+    }
+  ]
+}

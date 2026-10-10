@@ -27,6 +27,16 @@ AI 可以帮你写、读、整理资料；支持工具的应用还能读取文�
 
 通用任务与编码任务是使用场景的区别，不是完全隔离的两种模型。同一个应用可能同时支持两者。
 
+<!-- archify:first-agent-task:start -->
+## 第一个任务的完成路线
+
+先做只需要文字的最小任务，再用原文验收；无需为这次练习先安装 Skill 或 MCP。
+
+<iframe src="assets/diagrams/first-agent-task.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="第一次用 Agent：布置任务、核对结果、只改错处"></iframe>
+
+[单独打开图表](assets/diagrams/first-agent-task.html)
+<!-- archify:first-agent-task:end -->
+
 ## 第 1 步：新建一个任务或聊天
 
 在应用中打开新任务或新聊天。暂时不用开启联网、连接邮箱、安装插件或授权整个硬盘。

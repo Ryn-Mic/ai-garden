@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Skill：发现、加载与交付是不同阶段",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "应用发现与任务匹配"
+    },
+    {
+      "id": "stage1",
+      "label": "本轮使用与结果验收"
+    }
+  ],
+  "mainPath": [
+    "metadata",
+    "match",
+    "body",
+    "context",
+    "work",
+    "check"
+  ],
+  "nodes": [
+    {
+      "id": "metadata",
+      "type": "database",
+      "label": "发现技能简介",
+      "sublabel": "名称、描述与适用场景",
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "match",
+      "type": "backend",
+      "label": "匹配当前任务",
+      "sublabel": "自动匹配或显式选择",
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "body",
+      "type": "database",
+      "label": "读取 SKILL.md",
+      "sublabel": "按需读取参考与模板",
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "context",
+      "type": "messagebus",
+      "label": "加入本轮上下文",
+      "sublabel": "说明不是强制执行程序",
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "work",
+      "type": "backend",
+      "label": "按流程处理材料",
+      "sublabel": "脚本和工具另需权限",
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "check",
+      "type": "security",
+      "label": "检查实际产物",
+      "sublabel": "对照原文与验收标准",
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "metadata",
+      "to": "match"
+    },
+    {
+      "from": "match",
+      "to": "body"
+    },
+    {
+      "from": "body",
+      "to": "context"
+    },
+    {
+      "from": "context",
+      "to": "work"
+    },
+    {
+      "from": "work",
+      "to": "check"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "安装成功 ≠ 本轮已加载；已加载 ≠ 一定遵循",
+        "Skill 不提供它本来没有的数据访问能力，也不替代权限与审批"
+      ]
+    }
+  ]
+}

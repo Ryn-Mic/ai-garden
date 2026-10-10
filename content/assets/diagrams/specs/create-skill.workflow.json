@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "创建自己的 Skill：先验证规则，再选择安装方式",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "repeat",
+    "write",
+    "test",
+    "choose",
+    "install",
+    "verify"
+  ],
+  "nodes": [
+    {
+      "id": "repeat",
+      "type": "database",
+      "label": "收集重复纠正",
+      "sublabel": "只选一个稳定任务",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "write",
+      "type": "backend",
+      "label": "整理工作说明",
+      "sublabel": "适用、步骤、边界、验收",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "test",
+      "type": "security",
+      "label": "先测试提示模板",
+      "sublabel": "提供虚构材料核对缺失项",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "choose",
+      "type": "security",
+      "label": "确认需要原生 Skill",
+      "sublabel": "核对产品支持与导入入口",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "install",
+      "type": "frontend",
+      "label": "安装或继续用模板",
+      "sublabel": "不猜未确认的目录或按钮",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "verify",
+      "type": "security",
+      "label": "分别记录三类证据",
+      "sublabel": "安装、本轮加载、输出效果",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "repeat",
+      "to": "write"
+    },
+    {
+      "from": "write",
+      "to": "test"
+    },
+    {
+      "from": "test",
+      "to": "choose"
+    },
+    {
+      "from": "choose",
+      "to": "install"
+    },
+    {
+      "from": "install",
+      "to": "verify"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "稳定规则可以复用，本次负责人、日期和业务事实需要另行提供",
+        "改变说明后确认加载的是新版本，再用旧失败样例回归测试"
+      ]
+    }
+  ]
+}

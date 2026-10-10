@@ -46,6 +46,16 @@ aliases: ["toolbox/周报整理Skill"]
 
 最后一条是工作规则，真正的网络和写权限仍需应用侧控制。
 
+<!-- archify:weekly-summary:start -->
+### 周报内容怎样形成可核对记录
+
+分类、阶段、日期和原文依据分别提取；不能把某阶段的截止日期套给整个事项。
+
+<iframe src="assets/diagrams/weekly-summary.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="周报整理：事实提取、阶段拆分与缺失标记"></iframe>
+
+[单独打开图表](assets/diagrams/weekly-summary.html)
+<!-- archify:weekly-summary:end -->
+
 ## 一个能暴露问题的例子
 
 原始记录：

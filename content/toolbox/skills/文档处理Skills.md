@@ -51,6 +51,16 @@ aliases: ["toolbox/文档处理Skills"]
 
 安装与加载验证见 [[tutorials/skills/Skill从加载到验证|Skill从加载到验证]]。若需要额外终端配置而你不熟悉，先使用应用已有的文件能力或找技术协作。
 
+<!-- archify:document-skill-check:start -->
+### 从格式选择到实际文件验收
+
+Word、Excel、PPT 各有运行依赖和验收项；实际打开文件，而不只看聊天里的完成声明。
+
+<iframe src="assets/diagrams/document-skill-check.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="文档处理 Skill：交付的是可打开、可检查的文件"></iframe>
+
+[单独打开图表](assets/diagrams/document-skill-check.html)
+<!-- archify:document-skill-check:end -->
+
 ## 一次最小试用
 
 用一段非敏感的测试纪要，要求：

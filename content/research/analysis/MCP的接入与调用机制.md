@@ -44,6 +44,16 @@ AI 应用（Host）
 
 MCP 统一的是连接和交互接口，**没有规定所有应用必须怎样规划任务、加载 Skill 或管理模型上下文**。
 
+<!-- archify:mcp-mechanism-overview:start -->
+### 通信链路总览
+
+复用 MCP 概念页的调用链路总览。Host 管理任务和授权，Client 负责通信，Server 执行实际能力；报文与传输细节按实际版本核对。
+
+<iframe src="assets/mcp-call-sequence.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="通信链路总览"></iframe>
+
+[单独打开图表](assets/mcp-call-sequence.html)
+<!-- archify:mcp-mechanism-overview:end -->
+
 ## 一次工具调用通常经过哪些阶段
 
 1. **配置与建立连接**：按所用传输方式连接服务，处理版本和能力兼容。具体流程以双方实现为准。

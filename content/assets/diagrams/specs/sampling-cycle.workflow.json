@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "采样：从概率分布到下一 Token",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "分布与候选集"
+    },
+    {
+      "id": "stage1",
+      "label": "选择与继续生成"
+    }
+  ],
+  "mainPath": [
+    "scores",
+    "temperature",
+    "candidates",
+    "choose",
+    "append",
+    "stop"
+  ],
+  "nodes": [
+    {
+      "id": "scores",
+      "type": "backend",
+      "label": "得到概率分布",
+      "sublabel": "模型预测下一 Token",
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "temperature",
+      "type": "backend",
+      "label": "调整分布形状",
+      "sublabel": "温度影响集中或发散",
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "candidates",
+      "type": "security",
+      "label": "限定候选集",
+      "sublabel": "Top-k / Top-p 等策略",
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "choose",
+      "type": "backend",
+      "label": "选择下一 Token",
+      "sublabel": "贪心或从候选中采样",
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "append",
+      "type": "messagebus",
+      "label": "追加到输入序列",
+      "sublabel": "继续计算下一步分布",
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "stop",
+      "type": "security",
+      "label": "检查结束条件",
+      "sublabel": "遇结束符或长度限制停止",
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "scores",
+      "to": "temperature"
+    },
+    {
+      "from": "temperature",
+      "to": "candidates"
+    },
+    {
+      "from": "candidates",
+      "to": "choose"
+    },
+    {
+      "from": "choose",
+      "to": "append"
+    },
+    {
+      "from": "append",
+      "to": "stop"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "低温度不能保证事实正确；参数变化也不是输出变化的唯一原因",
+        "不同模型的实现细节和可复现承诺不同，迁移时需要重新验证"
+      ]
+    }
+  ]
+}

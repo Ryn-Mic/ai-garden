@@ -53,6 +53,16 @@ WorkBuddy 等软件已经有文件工作能力时，不必再叠一套 MCP。**�
 
 配置按 [官方 README](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem#readme) 核对，不照搬其中演示用的桌面目录。需要学习连接验收时，先看 [[tutorials/mcp/MCP从接入到验收|MCP从接入到验收]] 的公开网页练习；两种服务的参数不能混用。
 
+<!-- archify:filesystem-safety:start -->
+### 文件入口与权限的检查链路
+
+允许目录只限定范围，不代表只读；先检查当前实际工具，再用单个测试文件验收。
+
+<iframe src="assets/diagrams/filesystem-safety.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="文件系统 MCP：范围、工具与实际读取证据"></iframe>
+
+[单独打开图表](assets/diagrams/filesystem-safety.html)
+<!-- archify:filesystem-safety:end -->
+
 ## 只用测试目录验收一次
 
 ### 1. 单独准备原始材料目录

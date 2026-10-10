@@ -42,6 +42,17 @@ aliases: ["projects/ai-garden"]
 
 ## 架构
 
+<!-- archify:garden-publish-overview:start -->
+### 写作源与发布副本的关系
+
+复用发布流程图：正式 Vault 推入 Gitee，GitHub 工作流同步 content 副本、构建并发布。内容源与站点副本不能互换。
+
+<iframe src="assets/ai-garden-publish-flow.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="写作源与发布副本的关系"></iframe>
+
+[单独打开图表](assets/ai-garden-publish-flow.html)
+<!-- archify:garden-publish-overview:end -->
+
+
 ```text
 设备 A / B / C 上的 Obsidian（iPhone / iPad / Mac）
       ↕  iCloud 同步（vault 本体：笔记 + .obsidian + .git）

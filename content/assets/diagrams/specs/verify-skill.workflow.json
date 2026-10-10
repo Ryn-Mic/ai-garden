@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Skill 验证：装好、加载、交付分别检查",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "product",
+    "source",
+    "install",
+    "task",
+    "evidence",
+    "result"
+  ],
+  "nodes": [
+    {
+      "id": "product",
+      "type": "security",
+      "label": "核对支持方式",
+      "sublabel": "客户端形态与账户功能",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "source",
+      "type": "security",
+      "label": "检查来源与能力",
+      "sublabel": "作者、版本、脚本与权限",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "install",
+      "type": "frontend",
+      "label": "安装或提供模板",
+      "sublabel": "按当前官方入口操作",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "task",
+      "type": "frontend",
+      "label": "发起匹配小任务",
+      "sublabel": "用真实名称显式选择",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "evidence",
+      "type": "database",
+      "label": "查看本轮加载证据",
+      "sublabel": "使用提示、读取或诊断",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "result",
+      "type": "security",
+      "label": "对照原文验收",
+      "sublabel": "再试同类与缺失信息样例",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "product",
+      "to": "source"
+    },
+    {
+      "from": "source",
+      "to": "install"
+    },
+    {
+      "from": "install",
+      "to": "task"
+    },
+    {
+      "from": "task",
+      "to": "evidence"
+    },
+    {
+      "from": "evidence",
+      "to": "result"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "看不到加载记录就写未独立确认，不能用输出里出现技能名称代替证据",
+        "纯文字模板能复用要求，但不因此具备原生发现、脚本执行或额外权限"
+      ]
+    }
+  ]
+}

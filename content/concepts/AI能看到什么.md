@@ -33,6 +33,16 @@ aliases: ["tutorials/AI能看到什么"]
 
 把这一轮模型能利用的信息想成“当前工作台”。文件夹是资料柜，工作台可能只摆上从柜里取出的几页。这个工作台的技术名称叫“上下文”。
 
+<!-- archify:information-access:start -->
+### 资料参与回答的链路
+
+按权限、实际读取、本轮输入与输出证据分别检查；前一阶段不能代替后一阶段。
+
+<iframe src="assets/diagrams/information-access.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="AI 能看到什么：从授权到可核对的回答"></iframe>
+
+[单独打开图表](assets/diagrams/information-access.html)
+<!-- archify:information-access:end -->
+
 ## 不同资料怎么进入工作台
 
 ### 你主动提供的资料

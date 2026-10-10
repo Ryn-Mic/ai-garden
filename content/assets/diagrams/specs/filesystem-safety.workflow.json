@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "文件系统 MCP：范围、工具与实际读取证据",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "folder",
+    "scope",
+    "tools",
+    "read",
+    "evidence",
+    "verify"
+  ],
+  "nodes": [
+    {
+      "id": "folder",
+      "type": "database",
+      "label": "准备独立测试目录",
+      "sublabel": "只提供 materials 副本",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "scope",
+      "type": "security",
+      "label": "核对有效目录范围",
+      "sublabel": "包含实际 Roots 等配置",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "tools",
+      "type": "security",
+      "label": "核对读写工具",
+      "sublabel": "限制不需要的写操作",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "read",
+      "type": "messagebus",
+      "label": "指定一个文件读取",
+      "sublabel": "不要授权整盘或额外目录",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "evidence",
+      "type": "database",
+      "label": "查看调用与返回",
+      "sublabel": "文件名、批次和原文",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "verify",
+      "type": "security",
+      "label": "对照独立清单验收",
+      "sublabel": "不把自述当读取证明",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "folder",
+      "to": "scope"
+    },
+    {
+      "from": "scope",
+      "to": "tools"
+    },
+    {
+      "from": "tools",
+      "to": "read"
+    },
+    {
+      "from": "read",
+      "to": "evidence"
+    },
+    {
+      "from": "evidence",
+      "to": "verify"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "文件服务不自动提供所有 Office 格式解析与排版能力",
+        "本记录按 README 整理，未完成客户端实测；只读也不能自动防止资料外传"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Agent 框架选型：先看开发方式，再看主要瓶颈",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1180,
+      440
+    ]
+  },
+  "lanes": [
+    {
+      "id": "mode",
+      "label": "方案分支"
+    },
+    {
+      "id": "data",
+      "label": "需要写代码时的主要瓶颈"
+    }
+  ],
+  "mainPath": [
+    "code",
+    "dify"
+  ],
+  "nodes": [
+    {
+      "id": "code",
+      "type": "security",
+      "lane": "mode",
+      "col": 0,
+      "label": "要自己写代码？",
+      "sublabel": "核对部署与维护约束",
+      "width": 180
+    },
+    {
+      "id": "dify",
+      "type": "frontend",
+      "lane": "mode",
+      "col": 2,
+      "label": "Dify",
+      "sublabel": "优先验证可视化原型",
+      "width": 180
+    },
+    {
+      "id": "focus",
+      "type": "security",
+      "lane": "data",
+      "col": 0,
+      "label": "主要瓶颈在哪？",
+      "sublabel": "资料、检索或状态流程",
+      "width": 180
+    },
+    {
+      "id": "llama",
+      "type": "database",
+      "lane": "data",
+      "col": 2,
+      "label": "LlamaIndex",
+      "sublabel": "数据接入与检索组件",
+      "width": 180
+    },
+    {
+      "id": "graph",
+      "type": "backend",
+      "lane": "mode",
+      "col": 4,
+      "label": "LangChain",
+      "sublabel": "配合 LangGraph 编排状态",
+      "width": 180
+    }
+  ],
+  "edges": [
+    {
+      "from": "code",
+      "to": "dify",
+      "label": "不写代码"
+    },
+    {
+      "from": "code",
+      "to": "focus",
+      "label": "需要写",
+      "role": "branch"
+    },
+    {
+      "from": "focus",
+      "to": "llama",
+      "label": "数据与检索"
+    },
+    {
+      "from": "focus",
+      "to": "graph",
+      "label": "复杂状态编排",
+      "role": "branch"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "选型是带条件的取舍，不是统一排名",
+      "items": [
+        "可用 Dify 快速验证，再按深度定制需求评估代码框架",
+        "核对当前版本、权限、部署、日志与维护成本；数据和编排框架也可以协作"
+      ]
+    }
+  ]
+}

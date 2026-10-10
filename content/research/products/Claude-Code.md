@@ -35,6 +35,16 @@ aliases: ["Claude Code CLI","agents/Claude-Code"]
 
 把「读代码 → 改代码 → 跑命令 → 看报错 → 再改」这个循环交给 Agent，人只做目标定义和审查。
 
+<!-- archify:claude-code-cycle:start -->
+### 可审查的编码任务循环
+
+此图展示正文描述的开发环节，不代表工具默认获得整个仓库或外部系统的所有权限。
+
+<iframe src="assets/diagrams/claude-code-cycle.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="Claude Code：读代码、改代码、跑测试、审查证据"></iframe>
+
+[单独打开图表](assets/diagrams/claude-code-cycle.html)
+<!-- archify:claude-code-cycle:end -->
+
 ## 核心能力
 
 | 能力 | 说明 |

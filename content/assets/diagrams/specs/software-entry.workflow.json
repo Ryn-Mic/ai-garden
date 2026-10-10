@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "软件入门：同一份材料，同一套验收标准",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "product",
+    "new",
+    "paste",
+    "scope",
+    "review",
+    "save"
+  ],
+  "nodes": [
+    {
+      "id": "product",
+      "type": "security",
+      "label": "确认产品形态",
+      "sublabel": "桌面、IDE 与普通聊天",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "new",
+      "type": "frontend",
+      "label": "创建新任务或聊天",
+      "sublabel": "Qoder 日常任务选通用形态",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "paste",
+      "type": "database",
+      "label": "粘贴要求与原文",
+      "sublabel": "先排除附件解析干扰",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "scope",
+      "type": "security",
+      "label": "检查授权范围",
+      "sublabel": "不扩大无关的访问权限",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "review",
+      "type": "security",
+      "label": "核对实际表格",
+      "sublabel": "负责人、日期与讨论状态",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "save",
+      "type": "database",
+      "label": "保存稳定工作说明",
+      "sublabel": "后续按实际功能复用",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "product",
+      "to": "new"
+    },
+    {
+      "from": "new",
+      "to": "paste"
+    },
+    {
+      "from": "paste",
+      "to": "scope"
+    },
+    {
+      "from": "scope",
+      "to": "review"
+    },
+    {
+      "from": "review",
+      "to": "save"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "按钮与功能随版本、地区、账户变化，不能跨产品照抄菜单",
+        "本文整理的是操作路线；菜单观察不等于完整任务实测，普通聊天不等于原生 Skill 安装"
+      ]
+    }
+  ]
+}

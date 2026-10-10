@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "幻觉防线：从生成结果到独立证据",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "限定依据与生成"
+    },
+    {
+      "id": "stage1",
+      "label": "产物与动作核验"
+    }
+  ],
+  "mainPath": [
+    "materials",
+    "missing",
+    "draft",
+    "facts",
+    "actions",
+    "deliver"
+  ],
+  "nodes": [
+    {
+      "id": "materials",
+      "type": "database",
+      "label": "提供事实依据",
+      "sublabel": "原文、检索片段与出处",
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "missing",
+      "type": "security",
+      "label": "明确缺失处理",
+      "sublabel": "允许回答不知道或未提供",
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "draft",
+      "type": "backend",
+      "label": "生成候选结果",
+      "sublabel": "不把流畅度当正确性",
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "facts",
+      "type": "security",
+      "label": "逐项核对事实",
+      "sublabel": "与原文及有效来源比对",
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "actions",
+      "type": "security",
+      "label": "检查动作证据",
+      "sublabel": "Diff、测试、日志与产物",
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "deliver",
+      "type": "messagebus",
+      "label": "交付可核验结果",
+      "sublabel": "区分确认项与未确认项",
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "materials",
+      "to": "missing"
+    },
+    {
+      "from": "missing",
+      "to": "draft"
+    },
+    {
+      "from": "draft",
+      "to": "facts"
+    },
+    {
+      "from": "facts",
+      "to": "actions"
+    },
+    {
+      "from": "actions",
+      "to": "deliver"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "RAG、降低温度、换模型都不能自动消除幻觉",
+        "能交给确定性程序检查的格式、数值或测试，不只靠模型自我评价"
+      ]
+    }
+  ]
+}

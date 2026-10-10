@@ -23,6 +23,16 @@ aliases: ["tutorials/Agent失败时怎么排查"]
 
 可以用 [[tutorials/basics/练习材料与验收|虚构练习包]]，避免排查过程反复上传敏感文件。本文是排查框架，不是已经证明适用于所有产品的故障定位算法。
 
+<!-- archify:agent-diagnosis:start -->
+## 逐阶段定位失败
+
+这是一套检查顺序，不是保证适用于所有产品的自动故障定位算法；证据不足的阶段保持未确认。
+
+<iframe src="assets/diagrams/agent-diagnosis.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="Agent 排查：先缩小失败，再找阶段证据"></iframe>
+
+[单独打开图表](assets/diagrams/agent-diagnosis.html)
+<!-- archify:agent-diagnosis:end -->
+
 ## 按“任务 → 材料 → 能力 → 规则 → 结果”检查
 
 | 阶段 | 你要确认什么 | 能看的证据 |

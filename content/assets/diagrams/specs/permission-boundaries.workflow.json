@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "规则与权限：先限定动作，再检查真实结果",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "任务约束与执行边界"
+    },
+    {
+      "id": "stage1",
+      "label": "执行证据与结果检查"
+    }
+  ],
+  "mainPath": [
+    "request",
+    "scope",
+    "tools",
+    "approval",
+    "evidence",
+    "verify"
+  ],
+  "nodes": [
+    {
+      "id": "request",
+      "type": "frontend",
+      "label": "写清目标与要求",
+      "sublabel": "固定格式、样例与限制",
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "scope",
+      "type": "security",
+      "label": "限制资料范围",
+      "sublabel": "虚构材料或脱敏副本",
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "tools",
+      "type": "security",
+      "label": "只开放必要能力",
+      "sublabel": "分别确认读、写与发送",
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "approval",
+      "type": "security",
+      "label": "核对动作审批",
+      "sublabel": "按应用实际机制授权",
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "evidence",
+      "type": "database",
+      "label": "检查真实状态",
+      "sublabel": "文件、消息或业务结果",
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "verify",
+      "type": "security",
+      "label": "对照标准验收",
+      "sublabel": "取消后先检查再重试",
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "request",
+      "to": "scope"
+    },
+    {
+      "from": "scope",
+      "to": "tools"
+    },
+    {
+      "from": "tools",
+      "to": "approval"
+    },
+    {
+      "from": "approval",
+      "to": "evidence"
+    },
+    {
+      "from": "evidence",
+      "to": "verify"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "资料里的指令不是用户新的操作授权；提示词里的禁止不等于权限锁",
+        "取消任务不会撤销已经完成的发送、写入或删除，未经检查不要重复操作"
+      ]
+    }
+  ]
+}

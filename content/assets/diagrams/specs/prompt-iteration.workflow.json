@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {"title": "提示工程：用失败样本驱动迭代", "locale": "zh-CN", "quality_profile": "showcase"},
+  "lanes": [{"id": "design", "label": "设计与测试"}, {"id": "review", "label": "证据与修正"}],
+  "mainPath": ["draft", "cases", "run", "inspect", "revise", "retest"],
+  "nodes": [
+    {"id": "draft", "lane": "design", "col": 0, "type": "frontend", "label": "写提示初版", "sublabel": "任务、材料与输出格式"},
+    {"id": "cases", "lane": "design", "col": 1, "type": "database", "label": "建立测试集", "sublabel": "准备 10–20 条用例"},
+    {"id": "run", "lane": "design", "col": 2, "type": "backend", "label": "运行同一版本", "sublabel": "固定条件，保留输出"},
+    {"id": "inspect", "lane": "review", "col": 2, "type": "security", "label": "查看失败样本", "sublabel": "按事实和格式验收"},
+    {"id": "revise", "lane": "review", "col": 3, "type": "backend", "label": "只修改一处", "sublabel": "保留可归因的差异"},
+    {"id": "retest", "lane": "review", "col": 4, "type": "security", "label": "用原测试集复测", "sublabel": "比较改动前后的结果"}
+  ],
+  "edges": [
+    {"from": "draft", "to": "cases"},
+    {"from": "cases", "to": "run"},
+    {"from": "run", "to": "inspect", "label": "对照用例验收"},
+    {"from": "inspect", "to": "revise"},
+    {"from": "revise", "to": "retest"}
+  ],
+  "cards": [{"dot": "amber", "title": "不要把所有失败都交给提示词", "items": ["缺知识：补材料或检索；格式和数值：增加程序校验", "一次改多处或不保留测试集，都难以判断是否真的改善"]}]
+}

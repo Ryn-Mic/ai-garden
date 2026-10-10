@@ -35,6 +35,16 @@ aliases: ["tutorials/MCP从接入到验收"]
 
 `uvx` 是启动这个服务时使用的程序名，不是网址。不熟悉依赖安装时，先找技术协作；本篇不会把“一条命令下载并运行程序”包装成没有成本的步骤。
 
+<!-- archify:connect-mcp:start -->
+## 从接入到验收的完整路线
+
+以正文的公开网页练习为例，配置保存、服务启动、工具发现和实际调用不是同一种成功。
+
+<iframe src="assets/diagrams/connect-mcp.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="MCP 接入：先取得工具，再确认真实调用"></iframe>
+
+[单独打开图表](assets/diagrams/connect-mcp.html)
+<!-- archify:connect-mcp:end -->
+
 ## 第 1 步：打开自定义连接入口
 
 按 Qoder 当前官方文档：**Extensions → Connectors → Add Connector → Add custom MCP**。

@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "练习包：输入材料与验收答案分开使用",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "download",
+    "choose",
+    "provide",
+    "execute",
+    "check",
+    "record"
+  ],
+  "nodes": [
+    {
+      "id": "download",
+      "type": "frontend",
+      "label": "下载解压练习包",
+      "sublabel": "仅有虚构文字与 Skill",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "choose",
+      "type": "frontend",
+      "label": "选择一种练习",
+      "sublabel": "聊天、文件或周报任务",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "provide",
+      "type": "database",
+      "label": "只提供所需材料",
+      "sublabel": "materials 与工作说明",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "execute",
+      "type": "backend",
+      "label": "运行一次小任务",
+      "sublabel": "记录实际使用入口",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "check",
+      "type": "security",
+      "label": "独立对照验收清单",
+      "sublabel": "expected 用于自己检查",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "record",
+      "type": "database",
+      "label": "记录通过与失败",
+      "sublabel": "加载证据不足就标未知",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "download",
+      "to": "choose"
+    },
+    {
+      "from": "choose",
+      "to": "provide"
+    },
+    {
+      "from": "provide",
+      "to": "execute"
+    },
+    {
+      "from": "execute",
+      "to": "check"
+    },
+    {
+      "from": "check",
+      "to": "record"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "练习包的验收清单是人工标准，不是某个客户端的实测输出",
+        "答对编号只能作辅助证据；多次通过也不代表所有任务与版本可靠"
+      ]
+    }
+  ]
+}

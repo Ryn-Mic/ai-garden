@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "AI 能看到什么：从授权到可核对的回答",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "应用侧：允许访问与取到资料"
+    },
+    {
+      "id": "stage1",
+      "label": "本轮模型输入与结果核对"
+    }
+  ],
+  "mainPath": [
+    "scope",
+    "read",
+    "select",
+    "input",
+    "answer",
+    "verify"
+  ],
+  "nodes": [
+    {
+      "id": "scope",
+      "type": "security",
+      "label": "确认访问范围",
+      "sublabel": "只提供必要的测试资料",
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "read",
+      "type": "backend",
+      "label": "实际读取资料",
+      "sublabel": "打开文件或取得片段",
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "select",
+      "type": "database",
+      "label": "选择本轮内容",
+      "sublabel": "正文、片段或摘要",
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "input",
+      "type": "messagebus",
+      "label": "送入本轮上下文",
+      "sublabel": "不等于所有历史都在场",
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "answer",
+      "type": "backend",
+      "label": "基于输入作答",
+      "sublabel": "缺失字段仍需明确标注",
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "verify",
+      "type": "security",
+      "label": "核对记录与原文",
+      "sublabel": "不把自述当读取证据",
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "scope",
+      "to": "read"
+    },
+    {
+      "from": "read",
+      "to": "select"
+    },
+    {
+      "from": "select",
+      "to": "input"
+    },
+    {
+      "from": "input",
+      "to": "answer"
+    },
+    {
+      "from": "answer",
+      "to": "verify"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "有权限 ≠ 已读取；已读取 ≠ 之后每轮都保留全文",
+        "只读权限不自动防止外传；敏感资料先核对产品的数据处理方式"
+      ]
+    }
+  ]
+}

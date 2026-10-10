@@ -1,0 +1,127 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "系列 02：从稳定要求到可验收的 Skill",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "start",
+    "write",
+    "load",
+    "regress",
+    "exit"
+  ],
+  "nodes": [
+    {
+      "id": "start",
+      "type": "security",
+      "label": "先完成基本任务",
+      "sublabel": "已有重复且稳定的要求",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "write",
+      "type": "frontend",
+      "label": "1 · 保存测试流程",
+      "sublabel": "包含分类、表头和验收",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "load",
+      "type": "frontend",
+      "label": "2 · 按需导入检查",
+      "sublabel": "安装和本轮加载分开核对",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "regress",
+      "type": "security",
+      "label": "3 · 换材料验收",
+      "sublabel": "周报阶段与缺失信息不猜",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "exit",
+      "type": "messagebus",
+      "label": "按需选择延伸",
+      "sublabel": "办公文件或技术机制另行选读",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "write"
+    },
+    {
+      "from": "write",
+      "to": "load"
+    },
+    {
+      "from": "load",
+      "to": "regress"
+    },
+    {
+      "from": "regress",
+      "to": "exit"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "中途知识点：Skill、规则与权限；技能里的禁止不是权限锁",
+        "不支持原生 Skill 时继续用提示模板，不把文件结构通过当客户端已经生效"
+      ]
+    }
+  ]
+}

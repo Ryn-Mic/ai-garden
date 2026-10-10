@@ -47,6 +47,16 @@ ai-garden/                    # 站点仓库（GitHub）
 > [!warning] 注意
 > Quartz 4 的配置是 `quartz.config.ts`（TypeScript），不是 YAML。改配置改这个文件。
 
+<!-- archify:quartz-deployment:start -->
+## 从本地配置到线上验收
+
+图中体现本站当前的单工作流方式；baseUrl、内容源和构建输出是不同层的配置。
+
+<iframe src="assets/diagrams/quartz-deployment.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="Quartz 部署：本地验证、Actions 构建与线上检查"></iframe>
+
+[单独打开图表](assets/diagrams/quartz-deployment.html)
+<!-- archify:quartz-deployment:end -->
+
 ## 步骤
 
 ### 1. 本地跑起来

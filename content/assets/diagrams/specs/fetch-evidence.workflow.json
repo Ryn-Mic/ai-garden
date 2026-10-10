@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Fetch MCP：以实际正文证明一次网页读取",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "url",
+    "scope",
+    "call",
+    "content",
+    "quote",
+    "verify"
+  ],
+  "nodes": [
+    {
+      "id": "url",
+      "type": "frontend",
+      "label": "选公开测试 URL",
+      "sublabel": "不带令牌、不用内网地址",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "scope",
+      "type": "security",
+      "label": "确认访问与工具范围",
+      "sublabel": "应用和网络落实限制",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "call",
+      "type": "messagebus",
+      "label": "调用目标读取工具",
+      "sublabel": "不让其他搜索服务代替",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "content",
+      "type": "database",
+      "label": "检查实际返回正文",
+      "sublabel": "非空且不是拒绝或登录页",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "quote",
+      "type": "backend",
+      "label": "只基于返回内容回答",
+      "sublabel": "保留一句原文和获取状态",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "verify",
+      "type": "security",
+      "label": "核对调用与网页",
+      "sublabel": "自述和公开标题不是证明",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "url",
+      "to": "scope"
+    },
+    {
+      "from": "scope",
+      "to": "call"
+    },
+    {
+      "from": "call",
+      "to": "content"
+    },
+    {
+      "from": "content",
+      "to": "quote"
+    },
+    {
+      "from": "quote",
+      "to": "verify"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "动态网页、PDF、登录和交互需相应能力；失败时不绕过权限",
+        "网页中的指令属于不可信资料，不能成为用户新的操作授权"
+      ]
+    }
+  ]
+}

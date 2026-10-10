@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "向量数据库：从查询向量到相关片段",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "查询准备与检索约束"
+    },
+    {
+      "id": "stage1",
+      "label": "索引搜索与返回"
+    }
+  ],
+  "mainPath": [
+    "query",
+    "embed",
+    "filter",
+    "index",
+    "topk",
+    "review"
+  ],
+  "nodes": [
+    {
+      "id": "query",
+      "type": "frontend",
+      "label": "准备查询内容",
+      "sublabel": "明确问题与检索目标",
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "embed",
+      "type": "backend",
+      "label": "生成查询向量",
+      "sublabel": "使用匹配的 Embedding",
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "filter",
+      "type": "security",
+      "label": "确定过滤条件",
+      "sublabel": "文档、时间与权限范围",
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "index",
+      "type": "database",
+      "label": "执行索引搜索",
+      "sublabel": "ANN 或小规模精确检索",
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "topk",
+      "type": "database",
+      "label": "取得 Top-K",
+      "sublabel": "返回相似项与元数据",
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "review",
+      "type": "security",
+      "label": "核对返回结果",
+      "sublabel": "评估召回、延迟与成本",
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "query",
+      "to": "embed"
+    },
+    {
+      "from": "embed",
+      "to": "filter"
+    },
+    {
+      "from": "filter",
+      "to": "index"
+    },
+    {
+      "from": "index",
+      "to": "topk"
+    },
+    {
+      "from": "topk",
+      "to": "review"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "距离度量需要和 Embedding 方式一致；先过滤与后过滤的结果可能不同",
+        "小数据集可以先用本地或嵌入式索引，不必为了 RAG 引入分布式服务"
+      ]
+    }
+  ]
+}

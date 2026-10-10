@@ -1,0 +1,127 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "系列 03：外部工具要按调用证据验收",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "prepare",
+    "need",
+    "connect",
+    "verify",
+    "exit"
+  ],
+  "nodes": [
+    {
+      "id": "prepare",
+      "type": "security",
+      "label": "核对需求与环境",
+      "sublabel": "支持 MCP，依赖已准备",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "need",
+      "type": "frontend",
+      "label": "1 · 判断需求",
+      "sublabel": "先比较现有网页读取功能",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "connect",
+      "type": "messagebus",
+      "label": "2 · 接入与发现",
+      "sublabel": "服务可通信且工具可见",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "verify",
+      "type": "security",
+      "label": "3 · 公开调用与验收",
+      "sublabel": "核对服务、URL、记录、正文",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "exit",
+      "type": "security",
+      "label": "停用不需要的连接",
+      "sublabel": "目录操作或开发按需另学",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    }
+  ],
+  "edges": [
+    {
+      "from": "prepare",
+      "to": "need"
+    },
+    {
+      "from": "need",
+      "to": "connect"
+    },
+    {
+      "from": "connect",
+      "to": "verify"
+    },
+    {
+      "from": "verify",
+      "to": "exit"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "中途知识点：MCP、规则与权限；协议兼容不等于能力与安全保证",
+        "没有调用记录时保留未独立确认，不能仅凭公开标题答对判为成功"
+      ]
+    }
+  ]
+}

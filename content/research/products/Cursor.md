@@ -33,6 +33,16 @@ aliases: ["Cursor IDE","agents/Cursor"]
 
 在编辑器里用自然语言完成"跨文件改动"，并让它理解整个代码库而不是单个文件。
 
+<!-- archify:cursor-edit-cycle:start -->
+### 编辑器中的协作路线
+
+按改动范围选择补全、选区改写或多文件任务；索引与模型的具体内部行为不从这个示意图推断。
+
+<iframe src="assets/diagrams/cursor-edit-cycle.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="Cursor：从定位代码到人在环内的改动审查"></iframe>
+
+[单独打开图表](assets/diagrams/cursor-edit-cycle.html)
+<!-- archify:cursor-edit-cycle:end -->
+
 ## 核心能力
 
 | 能力 | 说明 |

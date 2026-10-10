@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Claude Code：读代码、改代码、跑测试、审查证据",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "goal",
+    "context",
+    "read",
+    "change",
+    "test",
+    "review"
+  ],
+  "nodes": [
+    {
+      "id": "goal",
+      "type": "frontend",
+      "label": "定义任务目标",
+      "sublabel": "明确范围与完成标准",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "context",
+      "type": "database",
+      "label": "提供项目约定",
+      "sublabel": "CLAUDE.md 与相关代码",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "read",
+      "type": "backend",
+      "label": "探索并定位代码",
+      "sublabel": "按任务读取必要文件",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "change",
+      "type": "backend",
+      "label": "实施限定改动",
+      "sublabel": "文件读写与命令受权限约束",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "test",
+      "type": "security",
+      "label": "运行测试与构建",
+      "sublabel": "失败时依据报错继续定位",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "review",
+      "type": "security",
+      "label": "审查 Diff 与结果",
+      "sublabel": "人审关键改动和持久动作",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "goal",
+      "to": "context"
+    },
+    {
+      "from": "context",
+      "to": "read"
+    },
+    {
+      "from": "read",
+      "to": "change"
+    },
+    {
+      "from": "change",
+      "to": "test"
+    },
+    {
+      "from": "test",
+      "to": "review"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "项目约定帮助组织上下文，不是替代执行权限的硬约束",
+        "大型仓库探索有成本，复杂重构仍需核对范围、测试和人工审查"
+      ]
+    }
+  ]
+}

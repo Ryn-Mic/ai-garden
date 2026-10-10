@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "LangChain：LCEL 组件与可选检索入口",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1320,
+      650
+    ]
+  },
+  "components": [
+    {
+      "id": "request",
+      "type": "frontend",
+      "label": "任务变量",
+      "sublabel": "例如 topic 参数",
+      "pos": [
+        40,
+        300
+      ],
+      "size": [
+        200,
+        90
+      ]
+    },
+    {
+      "id": "prompt",
+      "type": "backend",
+      "label": "PromptTemplate",
+      "sublabel": "把变量与资料组织为提示",
+      "pos": [
+        390,
+        300
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "model",
+      "type": "cloud",
+      "label": "ChatModel",
+      "sublabel": "统一模型调用接口",
+      "pos": [
+        740,
+        300
+      ],
+      "size": [
+        200,
+        90
+      ]
+    },
+    {
+      "id": "parser",
+      "type": "backend",
+      "label": "OutputParser",
+      "sublabel": "把输出转成目标表示",
+      "pos": [
+        1090,
+        300
+      ],
+      "size": [
+        200,
+        90
+      ]
+    },
+    {
+      "id": "retriever",
+      "type": "database",
+      "label": "Retriever",
+      "sublabel": "按任务需要召回资料",
+      "pos": [
+        390,
+        80
+      ],
+      "size": [
+        220,
+        90
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "request",
+      "to": "prompt",
+      "label": "传入任务变量"
+    },
+    {
+      "from": "prompt",
+      "to": "model",
+      "label": "发送组装后的提示"
+    },
+    {
+      "from": "model",
+      "to": "parser",
+      "label": "返回模型输出"
+    },
+    {
+      "from": "retriever",
+      "to": "prompt"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "可组合接口，不是每次都要安装的完整栈",
+      "items": [
+        "LCEL 的管道连接可执行组件；Retriever 可按需为提示补充相关资料",
+        "复杂有状态编排可用 LangGraph，可观测能力需另外核对；简单任务不必强套框架"
+      ]
+    }
+  ]
+}

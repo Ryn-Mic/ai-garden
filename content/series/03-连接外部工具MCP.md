@@ -31,6 +31,16 @@ knowledge_points: [concepts/MCP, concepts/规则与权限]
 
 缺少依赖安装经验时，找技术协作者准备环境；可以先手动提供网页正文，不必硬走配置流程。
 
+<!-- archify:series-external-mcp:start -->
+## 路线图
+
+只在确有外部读取需求、客户端支持且环境已准备时开始；这不是聊天后的必修课。
+
+<iframe src="assets/diagrams/series-external-mcp.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="系列 03：外部工具要按调用证据验收"></iframe>
+
+[单独打开图表](assets/diagrams/series-external-mcp.html)
+<!-- archify:series-external-mcp:end -->
+
 ## 主线：1 → 2 → 3
 
 [[toolbox/mcp/网页读取MCP|1 · 判断是否需要]] → [[tutorials/mcp/MCP从接入到验收#第 1 步：打开自定义连接入口|2 · 接入并发现工具]] → [[tutorials/mcp/MCP从接入到验收#第 4 步：用公开网页做小测试|3 · 调用与验收]]

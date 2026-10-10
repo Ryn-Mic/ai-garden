@@ -27,6 +27,16 @@ knowledge_points: [concepts/Agent, concepts/Token, concepts/Skill, concepts/规�
 
 **起步知识**：[[concepts/Agent|Agent]]。涉及 API、日志与对照实验；只有方案时不能记录为已验证结果。
 
+<!-- archify:series-agent-reliability:start -->
+## 路线图
+
+这是机制研究路线；实验方案和读图本身不能代替实际日志或运行证据。
+
+<iframe src="assets/diagrams/series-agent-reliability.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="系列 04：追踪上下文、Skill、工具与选型约束"></iframe>
+
+[单独打开图表](assets/diagrams/series-agent-reliability.html)
+<!-- archify:series-agent-reliability:end -->
+
 ## 主线：1 → 2 → 3 → 4
 
 [[concepts/上下文工程|1 · 信息怎样组织]] → [[research/analysis/Skill的加载机制与遵循边界|2 · 技能怎样加载]] → [[research/analysis/MCP的接入与调用机制|3 · 工具怎样调用]] → [[research/comparisons/Agent框架对比|4 · 根据需求做选型]]

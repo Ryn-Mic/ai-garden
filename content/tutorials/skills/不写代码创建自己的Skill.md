@@ -21,6 +21,16 @@ aliases: ["tutorials/不写代码创建自己的Skill"]
 
 **准备**：[[tutorials/basics/练习材料与验收|下载练习包]]。产品操作按官方文档整理，未完成客户端导入实测。
 
+<!-- archify:create-skill:start -->
+## 从重复要求到可复用说明
+
+先验证工作说明，再决定是否需要原生 Skill；保留产品分支和证据等级，不编造导入按钮。
+
+<iframe src="assets/diagrams/create-skill.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="创建自己的 Skill：先验证规则，再选择安装方式"></iframe>
+
+[单独打开图表](assets/diagrams/create-skill.html)
+<!-- archify:create-skill:end -->
+
 ## 第 1 步：找出你一直重复纠正的事
 
 先只选一个任务，例如“整理周报”，不要写一个同时负责写文章、发邮件、查账的万能 Skill。

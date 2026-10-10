@@ -37,6 +37,17 @@ aliases: ["LangChain.js","LangGraph","agents/LangChain"]
 
 ## 核心抽象
 
+<!-- archify:langchain-components:start -->
+### 最小链路与可选检索入口
+
+LCEL 串联可执行组件；Retriever 可为提示提供相关资料，不是每次调用都必须包含的步骤。
+
+<iframe src="assets/diagrams/langchain-components.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="最小链路与可选检索入口"></iframe>
+
+[单独打开图表](assets/diagrams/langchain-components.html)
+<!-- archify:langchain-components:end -->
+
+
 | 抽象 | 作用 |
 | --- | --- |
 | ChatModel | 统一各家模型接口，方便替换 |

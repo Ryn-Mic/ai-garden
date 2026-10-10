@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "MCP 接入：先取得工具，再确认真实调用",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "need",
+    "env",
+    "config",
+    "discover",
+    "call",
+    "verify"
+  ],
+  "nodes": [
+    {
+      "id": "need",
+      "type": "security",
+      "label": "确认需要外部能力",
+      "sublabel": "现有功能够用就不重复安装",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "env",
+      "type": "security",
+      "label": "核对客户端与环境",
+      "sublabel": "官方入口、程序、访问范围",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "config",
+      "type": "frontend",
+      "label": "分别填写程序和参数",
+      "sublabel": "Fetch 示例使用 stdio",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "discover",
+      "type": "database",
+      "label": "查看服务与工具列表",
+      "sublabel": "当前任务能取得目标工具",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "call",
+      "type": "messagebus",
+      "label": "执行公开网页小调用",
+      "sublabel": "参数来自指定测试 URL",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "verify",
+      "type": "security",
+      "label": "分四层核对证据",
+      "sublabel": "启动、发现、调用、正文",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "need",
+      "to": "env"
+    },
+    {
+      "from": "env",
+      "to": "config"
+    },
+    {
+      "from": "config",
+      "to": "discover"
+    },
+    {
+      "from": "discover",
+      "to": "call"
+    },
+    {
+      "from": "call",
+      "to": "verify"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "本图不是客户端接入实测；界面与配置仍以对应版本官方文档为准",
+        "抓取失败不绕过权限；公开标题答对不能独立证明目标 MCP 被调用"
+      ]
+    }
+  ]
+}

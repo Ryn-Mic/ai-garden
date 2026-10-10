@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "系列 01：先做任务，再核对资料与失败",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "文字任务与软件入口"
+    },
+    {
+      "id": "stage1",
+      "label": "文件练习与证据排错"
+    }
+  ],
+  "mainPath": [
+    "start",
+    "task",
+    "software",
+    "file",
+    "failure",
+    "exit"
+  ],
+  "nodes": [
+    {
+      "id": "start",
+      "type": "security",
+      "label": "准备低风险材料",
+      "sublabel": "可以打开一种聊天应用",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "task",
+      "type": "frontend",
+      "label": "1 · 做文字任务",
+      "sublabel": "会议记录整理成行动清单",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "software",
+      "type": "frontend",
+      "label": "2 · 找软件入口",
+      "sublabel": "只选择正在用的产品",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "file",
+      "type": "database",
+      "label": "3 · 试读测试文件",
+      "sublabel": "核对文件、批次与原文",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "failure",
+      "type": "security",
+      "label": "4 · 缩小一次失败",
+      "sublabel": "只改一个条件并保留证据",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "exit",
+      "type": "messagebus",
+      "label": "完成后按需扩展",
+      "sublabel": "重复规则用 Skill，缺能力再 MCP",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "task"
+    },
+    {
+      "from": "task",
+      "to": "software"
+    },
+    {
+      "from": "software",
+      "to": "file"
+    },
+    {
+      "from": "file",
+      "to": "failure"
+    },
+    {
+      "from": "failure",
+      "to": "exit"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "中途知识点：上下文、AI 能看到什么、规则与权限",
+        "不支持文件功能可继续文字版并保留未验证状态；不必为学习扩大权限"
+      ]
+    }
+  ]
+}

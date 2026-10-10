@@ -56,6 +56,17 @@ aliases: ["comparisons/Agent框架对比"]
 
 ## 决策流程
 
+<!-- archify:framework-selection:start -->
+### 按开发方式和瓶颈做选择
+
+这不是产品统一排名；可视化原型、资料检索与复杂状态编排是不同侧重点，最终要核对实际约束。
+
+<iframe src="assets/diagrams/framework-selection.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="按开发方式和瓶颈做选择"></iframe>
+
+[单独打开图表](assets/diagrams/framework-selection.html)
+<!-- archify:framework-selection:end -->
+
+
 ```text
 要写代码吗？
 ├── 不写 → [[research/products/Dify|Dify]]

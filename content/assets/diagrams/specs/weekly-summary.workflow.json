@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "周报整理：事实提取、阶段拆分与缺失标记",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "input",
+    "facts",
+    "phases",
+    "missing",
+    "classify",
+    "verify"
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "type": "database",
+      "label": "提供本周原始记录",
+      "sublabel": "每次任务的事实另行提供",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "facts",
+      "type": "backend",
+      "label": "提取明确事实",
+      "sublabel": "负责人和日期来自原文",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "phases",
+      "type": "backend",
+      "label": "拆开事项与阶段",
+      "sublabel": "已收集与未分类分开",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "missing",
+      "type": "security",
+      "label": "标记缺失信息",
+      "sublabel": "没有写就标待确认",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "classify",
+      "type": "backend",
+      "label": "按规则分类输出",
+      "sublabel": "已完成、待办、风险等",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "verify",
+      "type": "security",
+      "label": "逐项回溯原文",
+      "sublabel": "用旧失败样例回归检查",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "input",
+      "to": "facts"
+    },
+    {
+      "from": "facts",
+      "to": "phases"
+    },
+    {
+      "from": "phases",
+      "to": "missing"
+    },
+    {
+      "from": "missing",
+      "to": "classify"
+    },
+    {
+      "from": "classify",
+      "to": "verify"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "这是自建纯文字示例的流程，不是某个客户端的实测输出",
+        "Skill 不联网补造事实，不替代文件权限、审批或结果核对"
+      ]
+    }
+  ]
+}

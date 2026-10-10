@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Quartz 部署：本地验证、Actions 构建与线上检查",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "env",
+    "config",
+    "pages",
+    "push",
+    "ci",
+    "online"
+  ],
+  "nodes": [
+    {
+      "id": "env",
+      "type": "cloud",
+      "label": "准备 Node 与依赖",
+      "sublabel": "npm ci，核对 Node 版本",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "config",
+      "type": "backend",
+      "label": "配置站点与前缀",
+      "sublabel": "quartz.config.ts 的 baseUrl",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "pages",
+      "type": "frontend",
+      "label": "启用 Pages Actions",
+      "sublabel": "托管源选择 GitHub Actions",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "push",
+      "type": "messagebus",
+      "label": "推送发布仓库 main",
+      "sublabel": "写作内容先进入 Gitee 源",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "ci",
+      "type": "backend",
+      "label": "同步、构建与验证",
+      "sublabel": "生成 public 再上传部署",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "online",
+      "type": "security",
+      "label": "验收线上页面",
+      "sublabel": "链接、图表、搜索和手机阅读",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "env",
+      "to": "config"
+    },
+    {
+      "from": "config",
+      "to": "pages"
+    },
+    {
+      "from": "pages",
+      "to": "push"
+    },
+    {
+      "from": "push",
+      "to": "ci"
+    },
+    {
+      "from": "ci",
+      "to": "online"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "GitHub content 是副本，直接编辑会被下次同步覆盖；发布目标改变时重新核对 baseUrl",
+        "同步失败可沿用已有内容，但构建和内容校验仍需通过，不能只看推送成功"
+      ]
+    }
+  ]
+}

@@ -29,6 +29,17 @@ aliases: [分词, Tokenization, 词元]
 
 ## 核心原理
 
+<!-- archify:token-processing:start -->
+### 文本到 Token 的处理链路
+
+示意文本如何转为模型可计算的序列；具体切分结果必须用对应模型的 tokenizer 核对。
+
+<iframe src="assets/diagrams/token-processing.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="Token：文本如何进入模型计算"></iframe>
+
+[单独打开图表](assets/diagrams/token-processing.html)
+<!-- archify:token-processing:end -->
+
+
 ```text
 "我爱机器学习"
    ↓ tokenizer（查词表）

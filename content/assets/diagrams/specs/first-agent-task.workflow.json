@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "第一次用 Agent：布置任务、核对结果、只改错处",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "new",
+    "task",
+    "source",
+    "output",
+    "verify",
+    "repair"
+  ],
+  "nodes": [
+    {
+      "id": "new",
+      "type": "frontend",
+      "label": "新建独立聊天",
+      "sublabel": "不混入无关旧任务",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "task",
+      "type": "frontend",
+      "label": "说清交付目标",
+      "sublabel": "目标、材料、格式与限制",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "source",
+      "type": "database",
+      "label": "提供虚构原文",
+      "sublabel": "任务事实必须来自材料",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "output",
+      "type": "backend",
+      "label": "取得行动清单",
+      "sublabel": "日期和负责人不猜测",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "verify",
+      "type": "security",
+      "label": "逐项对照原文",
+      "sublabel": "检查缺失字段和讨论项",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "repair",
+      "type": "backend",
+      "label": "只修正失败字段",
+      "sublabel": "反复失败时缩短输入",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "new",
+      "to": "task"
+    },
+    {
+      "from": "task",
+      "to": "source"
+    },
+    {
+      "from": "source",
+      "to": "output"
+    },
+    {
+      "from": "output",
+      "to": "verify"
+    },
+    {
+      "from": "verify",
+      "to": "repair"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "第一次练习不需要邮箱、支付、生产数据库或整盘权限",
+        "AI 说已核对不等于验收通过；取消任务也不会撤销已完成操作"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "系列 04：追踪上下文、Skill、工具与选型约束",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "prepare",
+    "context",
+    "skill",
+    "mcp",
+    "choose",
+    "evidence"
+  ],
+  "nodes": [
+    {
+      "id": "prepare",
+      "type": "security",
+      "label": "核对研究前提",
+      "sublabel": "了解基本任务、API 与日志",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "context",
+      "type": "database",
+      "label": "1 · 研究输入组织",
+      "sublabel": "规则、历史、检索与工具结果",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "skill",
+      "type": "backend",
+      "label": "2 · 拆分技能阶段",
+      "sublabel": "发现、加载、遵循和交付",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "mcp",
+      "type": "messagebus",
+      "label": "3 · 追踪工具请求",
+      "sublabel": "选择、权限、执行与返回",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "choose",
+      "type": "security",
+      "label": "4 · 按约束做选型",
+      "sublabel": "状态、部署、权限和维护",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "evidence",
+      "type": "database",
+      "label": "记录限制与待测项",
+      "sublabel": "把观察与推断分开保存",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "prepare",
+      "to": "context"
+    },
+    {
+      "from": "context",
+      "to": "skill"
+    },
+    {
+      "from": "skill",
+      "to": "mcp"
+    },
+    {
+      "from": "mcp",
+      "to": "choose"
+    },
+    {
+      "from": "choose",
+      "to": "evidence"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "中途知识点：Agent、Token、Skill、规则与权限、MCP",
+        "旧文章和比较结论仍需核对版本与来源，不把读完文章记录为完成实测"
+      ]
+    }
+  ]
+}

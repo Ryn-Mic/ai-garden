@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "成本优化：先减少浪费，再增加工程投入",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "计量与低成本优化"
+    },
+    {
+      "id": "stage1",
+      "label": "架构取舍与效果回归"
+    }
+  ],
+  "mainPath": [
+    "measure",
+    "trim",
+    "cache",
+    "route",
+    "custom",
+    "regress"
+  ],
+  "nodes": [
+    {
+      "id": "measure",
+      "type": "database",
+      "label": "记录调用成本",
+      "sublabel": "输入输出、次数与耗时",
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "trim",
+      "type": "backend",
+      "label": "减少无关上下文",
+      "sublabel": "按需工具、选择性读取",
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "cache",
+      "type": "backend",
+      "label": "评估缓存收益",
+      "sublabel": "核对重复内容和缓存键",
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "route",
+      "type": "backend",
+      "label": "按任务分层模型",
+      "sublabel": "复杂任务保留强模型审查",
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "custom",
+      "type": "backend",
+      "label": "再考虑定制方案",
+      "sublabel": "蒸馏或本地模型等投入",
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "regress",
+      "type": "security",
+      "label": "回归成本与质量",
+      "sublabel": "统计重试与失败的代价",
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "measure",
+      "to": "trim"
+    },
+    {
+      "from": "trim",
+      "to": "cache"
+    },
+    {
+      "from": "cache",
+      "to": "route"
+    },
+    {
+      "from": "route",
+      "to": "custom"
+    },
+    {
+      "from": "custom",
+      "to": "regress"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "过度压缩和盲目降级可能增加重试，总成本反而更高",
+        "缓存与模型策略按任务、版本、用户范围验证，不套用固定节省数字"
+      ]
+    }
+  ]
+}

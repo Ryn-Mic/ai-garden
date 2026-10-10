@@ -24,6 +24,16 @@ knowledge_points: [concepts/Skill, concepts/规则与权限]
 
 **目标**：保存稳定要求，并分清“有文件、已安装、本轮加载、结果合格”。先会做一次基本任务即可，不要求读完所有知识点。
 
+<!-- archify:series-reusable-skill:start -->
+## 路线图
+
+先保存并测试工作说明，原生 Skill 只是按需选择的产品分支。
+
+<iframe src="assets/diagrams/series-reusable-skill.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="系列 02：从稳定要求到可验收的 Skill"></iframe>
+
+[单独打开图表](assets/diagrams/series-reusable-skill.html)
+<!-- archify:series-reusable-skill:end -->
+
 ## 主线：1 → 2 → 3
 
 [[tutorials/skills/不写代码创建自己的Skill|1 · 保存并测试流程]] → [[tutorials/skills/Skill从加载到验证|2 · 按需导入与检查]] → [[toolbox/skills/周报整理Skill|3 · 换材料验收]]

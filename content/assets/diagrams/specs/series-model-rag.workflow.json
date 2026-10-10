@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "系列 05：区分生成、表示、检索与行为调整",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "model",
+    "architecture",
+    "embed",
+    "rag",
+    "choose",
+    "evidence"
+  ],
+  "nodes": [
+    {
+      "id": "model",
+      "type": "backend",
+      "label": "1 · 模型与应用",
+      "sublabel": "训练知识、本轮输入、工具",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "architecture",
+      "type": "backend",
+      "label": "2 · 了解 Transformer",
+      "sublabel": "论文深入可单独选读",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "embed",
+      "type": "database",
+      "label": "3 · 理解向量表示",
+      "sublabel": "Embedding 与资料存取",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "rag",
+      "type": "messagebus",
+      "label": "4 · 检索接入回答",
+      "sublabel": "来源、组装与答案核对",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "choose",
+      "type": "security",
+      "label": "5 · 比较 RAG 与微调",
+      "sublabel": "事实更新与行为调整分开",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "evidence",
+      "type": "security",
+      "label": "用证据验收方案",
+      "sublabel": "引用、缺失信息与访问控制",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "model",
+      "to": "architecture"
+    },
+    {
+      "from": "architecture",
+      "to": "embed"
+    },
+    {
+      "from": "embed",
+      "to": "rag"
+    },
+    {
+      "from": "rag",
+      "to": "choose"
+    },
+    {
+      "from": "choose",
+      "to": "evidence"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "按需补 Token、采样、幻觉、向量数据库、微调等知识点",
+        "阅读示例不等于开发实验通过，实际依赖、模型版本和失败记录要保留"
+      ]
+    }
+  ]
+}

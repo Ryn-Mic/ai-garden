@@ -1,0 +1,1158 @@
+{
+  "schema_version": 1,
+  "article_coverage": {
+    "total": 51,
+    "with_embedded_diagrams": 51,
+    "edited": 44,
+    "existing_figures_retained": 8,
+    "new_figures": 38
+  },
+  "figures": [
+    {
+      "id": "information-access",
+      "diagram_type": "workflow",
+      "article": "concepts/AI能看到什么.md",
+      "output": "assets/diagrams/information-access.html",
+      "specification": "assets/diagrams/specs/information-access.workflow.json",
+      "specification_sha256": "e580c86f42ab7988a16bf253974c380e85ca2300b1e0e16b56ffee849deae02a",
+      "artifact_sha256": "713b0d0aeac5a3eceeaa231eb0b3bdc1c97b6f4274d175582a22e474b031ee1a",
+      "artifact_bytes": 705023,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "skill-loading",
+      "diagram_type": "workflow",
+      "article": "concepts/Skill.md",
+      "output": "assets/diagrams/skill-loading.html",
+      "specification": "assets/diagrams/specs/skill-loading.workflow.json",
+      "specification_sha256": "dd121f773ad2711c835a31c31c30046ec6f94e2722d4e4feaa4882c996ac7506",
+      "artifact_sha256": "d252aa83b1e2bbcce8111b02ebeda793c59b102714b54c41b073d2d82d3f5c2c",
+      "artifact_bytes": 704830,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "token-processing",
+      "diagram_type": "workflow",
+      "article": "concepts/Token.md",
+      "output": "assets/diagrams/token-processing.html",
+      "specification": "assets/diagrams/specs/token-processing.workflow.json",
+      "specification_sha256": "c7e46ec9881f3dbe7f2d10b68655c2e7e86be3a9a6bda187781fe36583874155",
+      "artifact_sha256": "c5e7ecf5c1f9d49daaa6c70fcfcfb0be0b7dec50030d2c730e4908d6fee93dd0",
+      "artifact_bytes": 704589,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "context-budget",
+      "diagram_type": "workflow",
+      "article": "concepts/上下文工程.md",
+      "output": "assets/diagrams/context-budget.html",
+      "specification": "assets/diagrams/specs/context-budget.workflow.json",
+      "specification_sha256": "fdf02ea2afbe3cf0db50a5634876561211594db7aeddaabd7e60eab258720474",
+      "artifact_sha256": "5ec028729516d42f52d5ce48b0a5c585844ff3da1610141940f09d7f711a9e95",
+      "artifact_bytes": 705136,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "vector-retrieval",
+      "diagram_type": "workflow",
+      "article": "concepts/向量数据库.md",
+      "output": "assets/diagrams/vector-retrieval.html",
+      "specification": "assets/diagrams/specs/vector-retrieval.workflow.json",
+      "specification_sha256": "282bb042ff6b513f32b575ebbc839f3a5c6df9b2c460b3b13b0d3b3e49742c79",
+      "artifact_sha256": "d0e49568f98fa8e475ea37cbcc144d36fee5668030927cbfe9d5b0b576581ad0",
+      "artifact_bytes": 704803,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "hallucination-check",
+      "diagram_type": "workflow",
+      "article": "concepts/幻觉.md",
+      "output": "assets/diagrams/hallucination-check.html",
+      "specification": "assets/diagrams/specs/hallucination-check.workflow.json",
+      "specification_sha256": "abe7d61f05b2a9c4073ff853d26d14377397931e2c742580c79a622c2632d471",
+      "artifact_sha256": "0956832bf1a9caf1ff5e6d7c122cace6a4e63f17e88e868db0a86e233aecd173",
+      "artifact_bytes": 704847,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "cost-priority",
+      "diagram_type": "workflow",
+      "article": "concepts/成本优化.md",
+      "output": "assets/diagrams/cost-priority.html",
+      "specification": "assets/diagrams/specs/cost-priority.workflow.json",
+      "specification_sha256": "3c1b713f14ca823731384d3bb2315581eaa0d949b6b57ce649fd6a0556f883d3",
+      "artifact_sha256": "c52fa5c92455a9ce89ca95151126e630987e99511c6893fc1af98dc4f7f067e9",
+      "artifact_bytes": 704213,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "permission-boundaries",
+      "diagram_type": "workflow",
+      "article": "concepts/规则与权限.md",
+      "output": "assets/diagrams/permission-boundaries.html",
+      "specification": "assets/diagrams/specs/permission-boundaries.workflow.json",
+      "specification_sha256": "11477d52841055359b54c29a5b932cd7f326cbeac18079fb210340d7a9651ae3",
+      "artifact_sha256": "2020a8b7cc2f88952e883309abd196b971ce165013a2f3d0b8c59ec245529b42",
+      "artifact_bytes": 704663,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "sampling-cycle",
+      "diagram_type": "workflow",
+      "article": "concepts/采样.md",
+      "output": "assets/diagrams/sampling-cycle.html",
+      "specification": "assets/diagrams/specs/sampling-cycle.workflow.json",
+      "specification_sha256": "c454b3244d8d4194f7c127b48b06b5458f58f890e66e8639b307be5244b843b1",
+      "artifact_sha256": "0395a65d0ca05f6cd51631859c1c11dd66f01412c83fcc16bed480da9ee612f8",
+      "artifact_bytes": 704170,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "first-agent-task",
+      "diagram_type": "workflow",
+      "article": "tutorials/basics/通用Agent的使用.md",
+      "output": "assets/diagrams/first-agent-task.html",
+      "specification": "assets/diagrams/specs/first-agent-task.workflow.json",
+      "specification_sha256": "be19fd2b911ed6664cc53ed829006257d39f8cfb57898199d3f18859a307c7fc",
+      "artifact_sha256": "e1042871f81fceaa01b07fd98c4dbba073aa7d4c28d5be7aabbc081b68a207a6",
+      "artifact_bytes": 704720,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "agent-diagnosis",
+      "diagram_type": "workflow",
+      "article": "tutorials/basics/Agent失败时怎么排查.md",
+      "output": "assets/diagrams/agent-diagnosis.html",
+      "specification": "assets/diagrams/specs/agent-diagnosis.workflow.json",
+      "specification_sha256": "e5d729622812f6038308e73542c6d4b18008647daa09e95813508f37f8616425",
+      "artifact_sha256": "54388e422982fb98a94d475ee5ded306ef2cc8182c4639271ea4214dd0486257",
+      "artifact_bytes": 703892,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "practice-evidence",
+      "diagram_type": "workflow",
+      "article": "tutorials/basics/练习材料与验收.md",
+      "output": "assets/diagrams/practice-evidence.html",
+      "specification": "assets/diagrams/specs/practice-evidence.workflow.json",
+      "specification_sha256": "8bebe7747d4cc2bfe6455e70fe87dbacd69b2456f0e3ce5f96e486992e846244",
+      "artifact_sha256": "278f095c6a5df1c8580daf73ff4f558a84dea2bc115a4115a5c75c0a32c27475",
+      "artifact_bytes": 704843,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "software-entry",
+      "diagram_type": "workflow",
+      "article": "tutorials/software/WorkBuddy-Qoder-ChatGPT入门.md",
+      "output": "assets/diagrams/software-entry.html",
+      "specification": "assets/diagrams/specs/software-entry.workflow.json",
+      "specification_sha256": "b8ff8d779adf9635cb33a1a9a288285d3deb4cc699103a2bd8afa7af937e9e34",
+      "artifact_sha256": "b11803e0f83e0c8bebcfbfe58e32375c33c620e82f4e69aa4c7e555ee3baa2cf",
+      "artifact_bytes": 704474,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "create-skill",
+      "diagram_type": "workflow",
+      "article": "tutorials/skills/不写代码创建自己的Skill.md",
+      "output": "assets/diagrams/create-skill.html",
+      "specification": "assets/diagrams/specs/create-skill.workflow.json",
+      "specification_sha256": "603bdb4580b8eca49a23989b329e8ef3ed5693281eed017e0df8f528b8ae70f0",
+      "artifact_sha256": "dbb7c273f6f965b7e6af599f446e3cfbc0726c8d403e18aa25c96629aa136372",
+      "artifact_bytes": 704872,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "verify-skill",
+      "diagram_type": "workflow",
+      "article": "tutorials/skills/Skill从加载到验证.md",
+      "output": "assets/diagrams/verify-skill.html",
+      "specification": "assets/diagrams/specs/verify-skill.workflow.json",
+      "specification_sha256": "af073399ab3f5d37c2906c1499f5621518e9cb15ea24cc555b41f70a0432f2ea",
+      "artifact_sha256": "fcb4af0c615e9d2f4df4053654a11044ba6282f0d901dd5132a544e8c9680978",
+      "artifact_bytes": 704586,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "connect-mcp",
+      "diagram_type": "workflow",
+      "article": "tutorials/mcp/MCP从接入到验收.md",
+      "output": "assets/diagrams/connect-mcp.html",
+      "specification": "assets/diagrams/specs/connect-mcp.workflow.json",
+      "specification_sha256": "de19cee5b0b468bb231a6142ec6421911c74b3a2d89992b6979398d698a286da",
+      "artifact_sha256": "29a7019dfa198587e1e2a7a4a81a17a2545f90d409f4a9864433ad1413734ef9",
+      "artifact_bytes": 705141,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "build-rag",
+      "diagram_type": "workflow",
+      "article": "tutorials/development/构建RAG应用.md",
+      "output": "assets/diagrams/build-rag.html",
+      "specification": "assets/diagrams/specs/build-rag.workflow.json",
+      "specification_sha256": "a58395a4ba4a8250f9e6c750d0eabf823c5b3a88f864a072a9390c3a194a5fe9",
+      "artifact_sha256": "901442a389fac6a15b6ba8744ada7c80b9e9804374fb1308ada84a756c8e4070",
+      "artifact_bytes": 705297,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "filesystem-safety",
+      "diagram_type": "workflow",
+      "article": "toolbox/mcp/文件系统MCP.md",
+      "output": "assets/diagrams/filesystem-safety.html",
+      "specification": "assets/diagrams/specs/filesystem-safety.workflow.json",
+      "specification_sha256": "5ac5441b74252ff73483525c039567fca5350e6e61d7efd3788e5574e6c477d4",
+      "artifact_sha256": "249787c3ed2f58ee201a55b56c60f634a6923ed8c66fdb00f2ca6b30edb1674d",
+      "artifact_bytes": 704504,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "fetch-evidence",
+      "diagram_type": "workflow",
+      "article": "toolbox/mcp/网页读取MCP.md",
+      "output": "assets/diagrams/fetch-evidence.html",
+      "specification": "assets/diagrams/specs/fetch-evidence.workflow.json",
+      "specification_sha256": "cfe990ff1936c36d0cd863512cdc9e457aba398f818b749387168e161d530ebf",
+      "artifact_sha256": "994df673834d2e33161778907376d332873b9f8538607c1e9ed13f1121f24ab0",
+      "artifact_bytes": 705401,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "weekly-summary",
+      "diagram_type": "workflow",
+      "article": "toolbox/skills/周报整理Skill.md",
+      "output": "assets/diagrams/weekly-summary.html",
+      "specification": "assets/diagrams/specs/weekly-summary.workflow.json",
+      "specification_sha256": "c88a38fb651573472a56594016e7c25b239941a08e8c53292927f405c899f81d",
+      "artifact_sha256": "b41124ffba4aa3996674687e8ba09cb36c02f82e389a975a03347bf3027df0a1",
+      "artifact_bytes": 704077,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "document-skill-check",
+      "diagram_type": "workflow",
+      "article": "toolbox/skills/文档处理Skills.md",
+      "output": "assets/diagrams/document-skill-check.html",
+      "specification": "assets/diagrams/specs/document-skill-check.workflow.json",
+      "specification_sha256": "dc96d5ecc81b4ed754abe4caaf425d5ffecf4255aa243046833167cf1e292a66",
+      "artifact_sha256": "23dd2f95e5d8a362a9c05f253a4602fc938eda46b1d6d60e87b7744125e1b769",
+      "artifact_bytes": 704893,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    },
+    {
+      "id": "claude-code-cycle",
+      "diagram_type": "workflow",
+      "article": "research/products/Claude-Code.md",
+      "output": "assets/diagrams/claude-code-cycle.html",
+      "specification": "assets/diagrams/specs/claude-code-cycle.workflow.json",
+      "specification_sha256": "981e257fed08bcbc8f222bcaf5be315dda722603ad031b5486bc88e8d938477e",
+      "artifact_sha256": "3c673d0904f132bd25f7eadad74dc559eae5b909d65755dde83bdfcd10897fe1",
+      "artifact_bytes": 704681,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "cursor-edit-cycle",
+      "diagram_type": "workflow",
+      "article": "research/products/Cursor.md",
+      "output": "assets/diagrams/cursor-edit-cycle.html",
+      "specification": "assets/diagrams/specs/cursor-edit-cycle.workflow.json",
+      "specification_sha256": "91c1192c347e12cdb89fa19ecc1c29cf7708c9d1b87fd972884569c1b695c77c",
+      "artifact_sha256": "9a7172fe0663f6ff08e4081f7bda38ab85b56a9f950f76fe6429b0d272ba0e6d",
+      "artifact_bytes": 704762,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "llamaindex-data-path",
+      "diagram_type": "workflow",
+      "article": "research/products/LlamaIndex.md",
+      "output": "assets/diagrams/llamaindex-data-path.html",
+      "specification": "assets/diagrams/specs/llamaindex-data-path.workflow.json",
+      "specification_sha256": "341592b93ac4ff97cf19449093aa34963c40953c575245cc11705e550366c3d0",
+      "artifact_sha256": "13ece38c1e391767e41994219cc2bb509c114f35ff1071178fe7fba302389099",
+      "artifact_bytes": 704260,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "attention-mechanism",
+      "diagram_type": "workflow",
+      "article": "research/papers/Attention-Is-All-You-Need.md",
+      "output": "assets/diagrams/attention-mechanism.html",
+      "specification": "assets/diagrams/specs/attention-mechanism.workflow.json",
+      "specification_sha256": "7d84fa52f099f5a4f0451c9375dc9388271ed0cad1997fea491cccde62ee57ff",
+      "artifact_sha256": "e2bc83b4523716ea85e2a3bdb1995b96db556359bb9ea12e4c5694c9770138c8",
+      "artifact_bytes": 704085,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "series-daily-ai",
+      "diagram_type": "workflow",
+      "article": "series/01-日常AI入门.md",
+      "output": "assets/diagrams/series-daily-ai.html",
+      "specification": "assets/diagrams/specs/series-daily-ai.workflow.json",
+      "specification_sha256": "a903c34f3f0369fe9160a3b4aed918de6bc9e16d52f3740258aff32a6a5b6d77",
+      "artifact_sha256": "e0223c62052058e601d633479f06c607b242408ef8feeb6ebd203be0ec2a9aad",
+      "artifact_bytes": 705395,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "series-reusable-skill",
+      "diagram_type": "workflow",
+      "article": "series/02-把工作流程变成Skill.md",
+      "output": "assets/diagrams/series-reusable-skill.html",
+      "specification": "assets/diagrams/specs/series-reusable-skill.workflow.json",
+      "specification_sha256": "690f3e4e9ae633b601d7715fae209810e867bdcdd8d8339138f306a447a6feab",
+      "artifact_sha256": "851b953ad2581fe9f4fb21af1e9db41497d9fb9fc542924ef4772d7ed34d10c2",
+      "artifact_bytes": 703282,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "series-external-mcp",
+      "diagram_type": "workflow",
+      "article": "series/03-连接外部工具MCP.md",
+      "output": "assets/diagrams/series-external-mcp.html",
+      "specification": "assets/diagrams/specs/series-external-mcp.workflow.json",
+      "specification_sha256": "68ad8ead968c374da16279f2897a73d19b2010a5a3666b96a82c025fba7cc213",
+      "artifact_sha256": "07a36c006b9ee31eb9187e2f499cd11d680280eb0ff0c14bf356436256f8654e",
+      "artifact_bytes": 703179,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "series-agent-reliability",
+      "diagram_type": "workflow",
+      "article": "series/04-Agent机制与可靠性.md",
+      "output": "assets/diagrams/series-agent-reliability.html",
+      "specification": "assets/diagrams/specs/series-agent-reliability.workflow.json",
+      "specification_sha256": "a46b9d88c79eb663e25b410e741e1ad609a4f047ba0ffd39e49f68b85b5a0160",
+      "artifact_sha256": "490de52f3aedb67c298a3c03d9da2e9038ffa9a58a5442b2b4f9a11e3a0185ae",
+      "artifact_bytes": 704965,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "series-model-rag",
+      "diagram_type": "workflow",
+      "article": "series/05-模型与RAG基础.md",
+      "output": "assets/diagrams/series-model-rag.html",
+      "specification": "assets/diagrams/specs/series-model-rag.workflow.json",
+      "specification_sha256": "0811ac650d86a531163fb81307dc7d91afce843f8eff806c6933028676f72020",
+      "artifact_sha256": "8cd3cbfdd0bb244e02d13bf9027a66b8f3726735fe54d6850632e82e3649a1ed",
+      "artifact_bytes": 704834,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "obsidian-authoring",
+      "diagram_type": "workflow",
+      "article": "maintenance/Obsidian配置指南.md",
+      "output": "assets/diagrams/obsidian-authoring.html",
+      "specification": "assets/diagrams/specs/obsidian-authoring.workflow.json",
+      "specification_sha256": "6de21b30a2b0b9a4c045caa39cc4fff5332e2b7c5d06b3c5e64aa33f24ad857b",
+      "artifact_sha256": "ec8b2435a4d02ec0936e252469ae18f15f119d3c647bad6a9d31dfb615845a75",
+      "artifact_bytes": 704598,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "quartz-deployment",
+      "diagram_type": "workflow",
+      "article": "maintenance/Quartz部署指南.md",
+      "output": "assets/diagrams/quartz-deployment.html",
+      "specification": "assets/diagrams/specs/quartz-deployment.workflow.json",
+      "specification_sha256": "b5fc0332fb3affc601586ff7ce8f8af762a8481d77f5bd0c4987a653474f884b",
+      "artifact_sha256": "6ed1aa545306c210c324442f22c789e9785b2aed9c23a9e4b85f696068fac20e",
+      "artifact_bytes": 705244,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "content-quality-gate",
+      "diagram_type": "workflow",
+      "article": "maintenance/内容分层与写作规范.md",
+      "output": "assets/diagrams/content-quality-gate.html",
+      "specification": "assets/diagrams/specs/content-quality-gate.workflow.json",
+      "specification_sha256": "7aacfe43ad523dac980ed66be87f16dfe1d656ac63aee85d042b1b6d7182d600",
+      "artifact_sha256": "bb90c8ad421fc92b5115e0bb922f42fb4739c52bab889cd395fd01bbe72883b2",
+      "artifact_bytes": 705168,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "prompt-iteration",
+      "diagram_type": "workflow",
+      "article": "concepts/提示工程.md",
+      "output": "assets/diagrams/prompt-iteration.html",
+      "specification": "assets/diagrams/specs/prompt-iteration.workflow.json",
+      "specification_sha256": "3f07c1174d0420fa56932f320438ce034bfa4aa36c4f142fe18d470ed124ee39",
+      "artifact_sha256": "75a5adcc0954d2e333c2df5fb48ac504afcb48ae9a1d552bfba7fe964368f4ca",
+      "artifact_bytes": 704871,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "context-composition",
+      "diagram_type": "architecture",
+      "article": "concepts/上下文.md",
+      "output": "assets/diagrams/context-composition.html",
+      "specification": "assets/diagrams/specs/context-composition.architecture.json",
+      "specification_sha256": "8f81e76f35ddde66274af94244153d7ca90d23462cb123a628aa17ae723fe51b",
+      "artifact_sha256": "32860e02408bcbe83e6e8ef04a049e098423f2620de3641fd5a75bfc0da31ee9",
+      "artifact_bytes": 703256,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "dify-structure",
+      "diagram_type": "architecture",
+      "article": "research/products/Dify.md",
+      "output": "assets/diagrams/dify-structure.html",
+      "specification": "assets/diagrams/specs/dify-structure.architecture.json",
+      "specification_sha256": "1890da3e1bece023fafdef54630ccf6501e06fce72604606c6e03998834e7b79",
+      "artifact_sha256": "d5998ef232d031e692a0a4be39a8abb35a75c0dafd10813fefd0d57ac815b1b9",
+      "artifact_bytes": 706200,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 2
+    },
+    {
+      "id": "langchain-components",
+      "diagram_type": "architecture",
+      "article": "research/products/LangChain.md",
+      "output": "assets/diagrams/langchain-components.html",
+      "specification": "assets/diagrams/specs/langchain-components.architecture.json",
+      "specification_sha256": "9790ca777bb93118b101fcf0bedbb602a8018147a1e44b7e37942fc1f570b23d",
+      "artifact_sha256": "8efa40289772d12a552b4e7ee412baccf39245d3d1d134207d45e74130c2900f",
+      "artifact_bytes": 703513,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 0
+    },
+    {
+      "id": "framework-selection",
+      "diagram_type": "workflow",
+      "article": "research/comparisons/Agent框架对比.md",
+      "output": "assets/diagrams/framework-selection.html",
+      "specification": "assets/diagrams/specs/framework-selection.workflow.json",
+      "specification_sha256": "e8dc26490f12d9942fe68ec1a2015d322256c2f0c6e50e400b6474f81d35b5e4",
+      "artifact_sha256": "cfea9ee82b6a80c8cb2d70df2b595b70eeea88007813e45f7803015b260a41f2",
+      "artifact_bytes": 704832,
+      "validation": {
+        "quality": "showcase",
+        "checks": "9/9",
+        "errors": 0,
+        "warnings": 0
+      },
+      "browser_evidence": "passed",
+      "visual_review": "passed",
+      "visual_scope": [
+        "light 2048x1320",
+        "dark 2048x1320"
+      ],
+      "correction_rounds": 1
+    }
+  ],
+  "placements": [
+    {
+      "article": "concepts/AI能看到什么.md",
+      "heading": "### 资料参与回答的链路",
+      "asset": "assets/diagrams/information-access.html",
+      "reuse": false
+    },
+    {
+      "article": "concepts/Skill.md",
+      "heading": "### 从发现到验收",
+      "asset": "assets/diagrams/skill-loading.html",
+      "reuse": false
+    },
+    {
+      "article": "concepts/Token.md",
+      "heading": "### 文本到 Token 的处理链路",
+      "asset": "assets/diagrams/token-processing.html",
+      "reuse": false
+    },
+    {
+      "article": "concepts/上下文工程.md",
+      "heading": "### 本轮上下文的组织流程",
+      "asset": "assets/diagrams/context-budget.html",
+      "reuse": false
+    },
+    {
+      "article": "concepts/向量数据库.md",
+      "heading": "### 一次向量检索的核心环节",
+      "asset": "assets/diagrams/vector-retrieval.html",
+      "reuse": false
+    },
+    {
+      "article": "concepts/幻觉.md",
+      "heading": "### 把可靠性检查放进流程",
+      "asset": "assets/diagrams/hallucination-check.html",
+      "reuse": false
+    },
+    {
+      "article": "concepts/成本优化.md",
+      "heading": "## 优化路线总览",
+      "asset": "assets/diagrams/cost-priority.html",
+      "reuse": false
+    },
+    {
+      "article": "concepts/规则与权限.md",
+      "heading": "### 要求、权限与验收如何配合",
+      "asset": "assets/diagrams/permission-boundaries.html",
+      "reuse": false
+    },
+    {
+      "article": "concepts/采样.md",
+      "heading": "### 下一 Token 怎样被选出来",
+      "asset": "assets/diagrams/sampling-cycle.html",
+      "reuse": false
+    },
+    {
+      "article": "tutorials/basics/通用Agent的使用.md",
+      "heading": "## 第一个任务的完成路线",
+      "asset": "assets/diagrams/first-agent-task.html",
+      "reuse": false
+    },
+    {
+      "article": "tutorials/basics/Agent失败时怎么排查.md",
+      "heading": "## 逐阶段定位失败",
+      "asset": "assets/diagrams/agent-diagnosis.html",
+      "reuse": false
+    },
+    {
+      "article": "tutorials/basics/练习材料与验收.md",
+      "heading": "## 练习与验收的整体顺序",
+      "asset": "assets/diagrams/practice-evidence.html",
+      "reuse": false
+    },
+    {
+      "article": "tutorials/software/WorkBuddy-Qoder-ChatGPT入门.md",
+      "heading": "## 三个产品都可复用的任务路线",
+      "asset": "assets/diagrams/software-entry.html",
+      "reuse": false
+    },
+    {
+      "article": "tutorials/skills/不写代码创建自己的Skill.md",
+      "heading": "## 从重复要求到可复用说明",
+      "asset": "assets/diagrams/create-skill.html",
+      "reuse": false
+    },
+    {
+      "article": "tutorials/skills/Skill从加载到验证.md",
+      "heading": "## 安装与生效的验证路线",
+      "asset": "assets/diagrams/verify-skill.html",
+      "reuse": false
+    },
+    {
+      "article": "tutorials/mcp/MCP从接入到验收.md",
+      "heading": "## 从接入到验收的完整路线",
+      "asset": "assets/diagrams/connect-mcp.html",
+      "reuse": false
+    },
+    {
+      "article": "tutorials/development/构建RAG应用.md",
+      "heading": "## 最小实现的技术链路",
+      "asset": "assets/diagrams/build-rag.html",
+      "reuse": false
+    },
+    {
+      "article": "toolbox/mcp/文件系统MCP.md",
+      "heading": "### 文件入口与权限的检查链路",
+      "asset": "assets/diagrams/filesystem-safety.html",
+      "reuse": false
+    },
+    {
+      "article": "toolbox/mcp/网页读取MCP.md",
+      "heading": "### 网页读取与内容验收链路",
+      "asset": "assets/diagrams/fetch-evidence.html",
+      "reuse": false
+    },
+    {
+      "article": "toolbox/skills/周报整理Skill.md",
+      "heading": "### 周报内容怎样形成可核对记录",
+      "asset": "assets/diagrams/weekly-summary.html",
+      "reuse": false
+    },
+    {
+      "article": "toolbox/skills/文档处理Skills.md",
+      "heading": "### 从格式选择到实际文件验收",
+      "asset": "assets/diagrams/document-skill-check.html",
+      "reuse": false
+    },
+    {
+      "article": "research/products/Claude-Code.md",
+      "heading": "### 可审查的编码任务循环",
+      "asset": "assets/diagrams/claude-code-cycle.html",
+      "reuse": false
+    },
+    {
+      "article": "research/products/Cursor.md",
+      "heading": "### 编辑器中的协作路线",
+      "asset": "assets/diagrams/cursor-edit-cycle.html",
+      "reuse": false
+    },
+    {
+      "article": "research/products/LlamaIndex.md",
+      "heading": "### 数据准备与查询的分层链路",
+      "asset": "assets/diagrams/llamaindex-data-path.html",
+      "reuse": false
+    },
+    {
+      "article": "research/papers/Attention-Is-All-You-Need.md",
+      "heading": "### 注意力的核心计算关系",
+      "asset": "assets/diagrams/attention-mechanism.html",
+      "reuse": false
+    },
+    {
+      "article": "series/01-日常AI入门.md",
+      "heading": "## 路线图",
+      "asset": "assets/diagrams/series-daily-ai.html",
+      "reuse": false
+    },
+    {
+      "article": "series/02-把工作流程变成Skill.md",
+      "heading": "## 路线图",
+      "asset": "assets/diagrams/series-reusable-skill.html",
+      "reuse": false
+    },
+    {
+      "article": "series/03-连接外部工具MCP.md",
+      "heading": "## 路线图",
+      "asset": "assets/diagrams/series-external-mcp.html",
+      "reuse": false
+    },
+    {
+      "article": "series/04-Agent机制与可靠性.md",
+      "heading": "## 路线图",
+      "asset": "assets/diagrams/series-agent-reliability.html",
+      "reuse": false
+    },
+    {
+      "article": "series/05-模型与RAG基础.md",
+      "heading": "## 路线图",
+      "asset": "assets/diagrams/series-model-rag.html",
+      "reuse": false
+    },
+    {
+      "article": "maintenance/Obsidian配置指南.md",
+      "heading": "## 写作配置的检查路线",
+      "asset": "assets/diagrams/obsidian-authoring.html",
+      "reuse": false
+    },
+    {
+      "article": "maintenance/Quartz部署指南.md",
+      "heading": "## 从本地配置到线上验收",
+      "asset": "assets/diagrams/quartz-deployment.html",
+      "reuse": false
+    },
+    {
+      "article": "maintenance/内容分层与写作规范.md",
+      "heading": "## 写作到发布的检查流程",
+      "asset": "assets/diagrams/content-quality-gate.html",
+      "reuse": false
+    },
+    {
+      "article": "concepts/提示工程.md",
+      "heading": "#### 可归因的提示迭代流程",
+      "asset": "assets/diagrams/prompt-iteration.html",
+      "reuse": false
+    },
+    {
+      "article": "concepts/上下文.md",
+      "heading": "## 本轮信息的组成关系",
+      "asset": "assets/diagrams/context-composition.html",
+      "reuse": false
+    },
+    {
+      "article": "research/products/Dify.md",
+      "heading": "### 编排、知识库与模型接入",
+      "asset": "assets/diagrams/dify-structure.html",
+      "reuse": false
+    },
+    {
+      "article": "research/products/LangChain.md",
+      "heading": "### 最小链路与可选检索入口",
+      "asset": "assets/diagrams/langchain-components.html",
+      "reuse": false
+    },
+    {
+      "article": "research/comparisons/RAG与微调.md",
+      "heading": "### 两种方案各自改变什么",
+      "asset": "assets/rag-pipeline-flow.html",
+      "secondary_asset": "assets/finetuning-workflow.html",
+      "reuse": true
+    },
+    {
+      "article": "research/comparisons/Agent框架对比.md",
+      "heading": "### 按开发方式和瓶颈做选择",
+      "asset": "assets/diagrams/framework-selection.html",
+      "reuse": false
+    },
+    {
+      "article": "research/analysis/MCP的接入与调用机制.md",
+      "heading": "### 通信链路总览",
+      "asset": "assets/mcp-call-sequence.html",
+      "reuse": true
+    },
+    {
+      "article": "research/analysis/Skill的加载机制与遵循边界.md",
+      "heading": "### 发现到产物的阶段示意",
+      "asset": "assets/diagrams/skill-loading.html",
+      "reuse": true
+    },
+    {
+      "article": "maintenance/ai-garden.md",
+      "heading": "### 写作源与发布副本的关系",
+      "asset": "assets/ai-garden-publish-flow.html",
+      "reuse": true
+    },
+    {
+      "article": "maintenance/多端同步与发布流程.md",
+      "heading": "### Mac 推送之后的发布路径",
+      "asset": "assets/ai-garden-publish-flow.html",
+      "reuse": true
+    },
+    {
+      "article": "concepts/微调.md",
+      "heading": "### 模型微调的完整流程",
+      "asset": "assets/finetuning-workflow.html",
+      "reuse": true
+    }
+  ],
+  "notes": [
+    "Diagram facts are based on existing article text; original article verification levels are unchanged.",
+    "The RAG-versus-finetuning branch candidate was rejected after two corrections; the article reuses the two existing pipeline diagrams.",
+    "QA screenshots and absolute local paths are not published."
+  ]
+}

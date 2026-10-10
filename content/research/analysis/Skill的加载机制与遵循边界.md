@@ -52,6 +52,16 @@ Agent Skills 是开放格式：目录中的 `SKILL.md` 包含名称、描述和�
 
 资源路径存在，不代表正文、脚本源码和全部引用都进入同一次模型调用。脚本可以由宿主执行，模型只接收结果。
 
+<!-- archify:skill-mechanism-overview:start -->
+### 发现到产物的阶段示意
+
+复用 Skill 概念页的阶段图，便于对应下方四类失败；仍需分别观察元数据、正文加载、执行与独立验收证据。
+
+<iframe src="assets/diagrams/skill-loading.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="发现到产物的阶段示意"></iframe>
+
+[单独打开图表](assets/diagrams/skill-loading.html)
+<!-- archify:skill-mechanism-overview:end -->
+
 ## 四类失败不要混成“提示词不够强”
 
 | 失败点 | 例子 | 优先排查 |

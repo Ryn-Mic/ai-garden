@@ -21,6 +21,16 @@ aliases: ["tutorials/构建RAG应用"]
 **前置知识**：[[concepts/RAG|RAG]]、[[concepts/Embedding|Embedding]]、[[concepts/向量数据库|向量数据库]]
 **预计耗时**：40 分钟
 
+<!-- archify:build-rag:start -->
+## 最小实现的技术链路
+
+区分检索用 Embedding 和生成模型；先看 source_nodes，再判断最终回答。
+
+<iframe src="assets/diagrams/build-rag.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="构建 RAG：加载、索引、查询与出处验证"></iframe>
+
+[单独打开图表](assets/diagrams/build-rag.html)
+<!-- archify:build-rag:end -->
+
 ## 步骤
 
 ### 1. 装依赖

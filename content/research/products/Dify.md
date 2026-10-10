@@ -37,6 +37,17 @@ aliases: ["Dify.ai","agents/Dify"]
 
 ## 核心抽象
 
+<!-- archify:dify-structure:start -->
+### 编排、知识库与模型接入
+
+这是正文能力的概念关系，不是固定部署拓扑；自托管也需单独确认模型与工具的数据流向。
+
+<iframe src="assets/diagrams/dify-structure.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="编排、知识库与模型接入"></iframe>
+
+[单独打开图表](assets/diagrams/dify-structure.html)
+<!-- archify:dify-structure:end -->
+
+
 | 抽象 | 说明 |
 | --- | --- |
 | 应用 | 四类：Chatbot / Agent / Workflow / Completion |

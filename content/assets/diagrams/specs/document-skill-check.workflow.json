@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "文档处理 Skill：交付的是可打开、可检查的文件",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "format",
+    "support",
+    "copy",
+    "produce",
+    "open",
+    "check"
+  ],
+  "nodes": [
+    {
+      "id": "format",
+      "type": "frontend",
+      "label": "确定目标格式",
+      "sublabel": "docx / xlsx / pptx",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "support",
+      "type": "security",
+      "label": "核对来源与支持",
+      "sublabel": "客户端、依赖与许可",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "copy",
+      "type": "database",
+      "label": "准备非敏感副本",
+      "sublabel": "原始材料与输出位置分开",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "produce",
+      "type": "backend",
+      "label": "执行文档处理流程",
+      "sublabel": "生成实际文件，不覆盖原件",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "open",
+      "type": "frontend",
+      "label": "打开输出文件",
+      "sublabel": "核对内容与分页或版式",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "check",
+      "type": "security",
+      "label": "按格式验收",
+      "sublabel": "公式、空值、溢出与来源",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "format",
+      "to": "support"
+    },
+    {
+      "from": "support",
+      "to": "copy"
+    },
+    {
+      "from": "copy",
+      "to": "produce"
+    },
+    {
+      "from": "produce",
+      "to": "open"
+    },
+    {
+      "from": "open",
+      "to": "check"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "官方来源不保证任意客户端同样生效，许可需查看各目录具体条款",
+        "聊天自称已生成或给出不可用入口，都不算完成；敏感内容的数据流向也要确认"
+      ]
+    }
+  ]
+}

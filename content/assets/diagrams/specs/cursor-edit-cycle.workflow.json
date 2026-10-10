@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Cursor：从定位代码到人在环内的改动审查",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "locate",
+    "rules",
+    "entry",
+    "edit",
+    "review",
+    "verify"
+  ],
+  "nodes": [
+    {
+      "id": "locate",
+      "type": "frontend",
+      "label": "定位当前编辑目标",
+      "sublabel": "文件、选区或跨文件任务",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "rules",
+      "type": "database",
+      "label": "提供规则与上下文",
+      "sublabel": "项目约定和相关代码",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "entry",
+      "type": "security",
+      "label": "选择合适入口",
+      "sublabel": "Tab、Cmd+K 或 Agent",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "edit",
+      "type": "backend",
+      "label": "生成候选改动",
+      "sublabel": "按功能处理选区或多文件",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "review",
+      "type": "security",
+      "label": "检查实际差异",
+      "sublabel": "确认没有扩大任务范围",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "verify",
+      "type": "security",
+      "label": "验证行为与产物",
+      "sublabel": "按项目方式运行测试",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "locate",
+      "to": "rules"
+    },
+    {
+      "from": "rules",
+      "to": "entry"
+    },
+    {
+      "from": "entry",
+      "to": "edit"
+    },
+    {
+      "from": "edit",
+      "to": "review"
+    },
+    {
+      "from": "review",
+      "to": "verify"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "菜单、模式与能力需按实际版本核对，闭源索引行为不是完全透明的",
+        "敏感项目先确认资料与索引的数据处理方式，不能把索引存在当全文已进入模型"
+      ]
+    }
+  ]
+}

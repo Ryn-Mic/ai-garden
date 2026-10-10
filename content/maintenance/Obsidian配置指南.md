@@ -20,6 +20,16 @@ aliases: ["tutorials/Obsidian配置指南"]
 
 **预计耗时**：10 分钟
 
+<!-- archify:obsidian-authoring:start -->
+## 写作配置的检查路线
+
+正式内容在写作 Vault 维护；用于构建的 content 副本不能代替上游内容源。
+
+<iframe src="assets/diagrams/obsidian-authoring.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="Obsidian 配置：让写作目录、链接和附件对齐"></iframe>
+
+[单独打开图表](assets/diagrams/obsidian-authoring.html)
+<!-- archify:obsidian-authoring:end -->
+
 ## 步骤
 
 ### 1. 打开 Vault

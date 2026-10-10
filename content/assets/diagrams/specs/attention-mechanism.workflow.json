@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Attention：从相关性权重到 Value 的加权结果",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "input",
+    "qkv",
+    "scores",
+    "weights",
+    "sum",
+    "heads"
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "type": "database",
+      "label": "准备序列表示",
+      "sublabel": "Embedding 与位置信息",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "qkv",
+      "type": "backend",
+      "label": "形成 Q / K / V",
+      "sublabel": "Query、Key、Value 表示",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "scores",
+      "type": "backend",
+      "label": "计算 Q 与 K 相关性",
+      "sublabel": "点积确定匹配程度",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "weights",
+      "type": "backend",
+      "label": "得到注意力权重",
+      "sublabel": "按相关性分配关注程度",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "sum",
+      "type": "backend",
+      "label": "对 Value 加权求和",
+      "sublabel": "可学习的加权平均",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "heads",
+      "type": "messagebus",
+      "label": "组合多头表示",
+      "sublabel": "不同头可捕捉不同关系",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "input",
+      "to": "qkv"
+    },
+    {
+      "from": "qkv",
+      "to": "scores"
+    },
+    {
+      "from": "scores",
+      "to": "weights"
+    },
+    {
+      "from": "weights",
+      "to": "sum"
+    },
+    {
+      "from": "sum",
+      "to": "heads"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "位置编码、多头、残差与 LayerNorm 是不同构件，不把机制示意当完整模型",
+        "注意力在序列长度上的二次复杂度是重要代价；读图不等于论文或性能实验已验证"
+      ]
+    }
+  ]
+}

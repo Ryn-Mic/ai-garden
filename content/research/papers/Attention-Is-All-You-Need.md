@@ -39,6 +39,16 @@ aliases: ["resources/Attention-Is-All-You-Need"]
 5. **残差 + LayerNorm**：让深网络可训练。
 6. **O(n²) 的代价**：注意力复杂度随序列长度平方增长——长上下文的根本瓶颈，也是后续所有高效注意力研究的起点。
 
+<!-- archify:attention-mechanism:start -->
+### 注意力的核心计算关系
+
+这是正文解释的 Q/K/V 核心机制，不是原论文完整的编码器—解码器部署或所有层结构。
+
+<iframe src="assets/diagrams/attention-mechanism.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="Attention：从相关性权重到 Value 的加权结果"></iframe>
+
+[单独打开图表](assets/diagrams/attention-mechanism.html)
+<!-- archify:attention-mechanism:end -->
+
 ## 我的理解
 
 读完这篇要带走的最重要一件事：**注意力的本质是可学习的加权平均**。Query 决定"我要找什么"，Key 决定"我提供什么"，点积给出相关性权重，再对 Value 加权求和。理解了这个，KV Cache、Flash Attention、长上下文优化就都有了共同的语言。

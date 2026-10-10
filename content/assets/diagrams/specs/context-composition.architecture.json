@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "上下文：应用怎样组织本轮工作材料",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1140,
+      660
+    ]
+  },
+  "components": [
+    {
+      "id": "materials",
+      "type": "database",
+      "label": "目标与用户材料",
+      "sublabel": "文字、文件内容与历史",
+      "pos": [
+        50,
+        260
+      ],
+      "size": [
+        200,
+        90
+      ]
+    },
+    {
+      "id": "host",
+      "type": "backend",
+      "label": "AI 应用",
+      "sublabel": "按功能与策略选取信息",
+      "pos": [
+        450,
+        260
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "model",
+      "type": "cloud",
+      "label": "本轮模型调用",
+      "sublabel": "收到所组装的上下文",
+      "pos": [
+        880,
+        260
+      ],
+      "size": [
+        200,
+        90
+      ]
+    },
+    {
+      "id": "rules",
+      "type": "security",
+      "label": "工作规则与 Skill",
+      "sublabel": "按需要提供或加载",
+      "pos": [
+        450,
+        70
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "results",
+      "type": "database",
+      "label": "实际工具结果",
+      "sublabel": "返回正文、片段或摘要",
+      "pos": [
+        450,
+        480
+      ],
+      "size": [
+        220,
+        90
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "materials",
+      "to": "host",
+      "label": "提供任务资料"
+    },
+    {
+      "from": "host",
+      "to": "model",
+      "label": "组装后送入上下文"
+    },
+    {
+      "from": "rules",
+      "to": "host"
+    },
+    {
+      "from": "results",
+      "to": "host"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "桌面不是整个资料柜",
+      "items": [
+        "可访问的文件、已保存的历史或已安装的 Skill，不会自动全部进入本轮输入",
+        "窗口有限；历史可能被摘要或截断，关键事实需要重新提供并核对"
+      ]
+    }
+  ]
+}

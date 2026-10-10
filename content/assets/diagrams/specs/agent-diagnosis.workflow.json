@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Agent 排查：先缩小失败，再找阶段证据",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "record",
+    "task",
+    "material",
+    "ability",
+    "rules",
+    "result"
+  ],
+  "nodes": [
+    {
+      "id": "record",
+      "type": "database",
+      "label": "保留失败记录",
+      "sublabel": "在新任务用短材料复现",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "task",
+      "type": "security",
+      "label": "检查任务要求",
+      "sublabel": "目标、表头与样例明确",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "material",
+      "type": "security",
+      "label": "检查原始材料",
+      "sublabel": "读取记录和原文依据",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "ability",
+      "type": "security",
+      "label": "检查能力权限",
+      "sublabel": "当前模式、工具与审批",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "rules",
+      "type": "security",
+      "label": "检查说明加载",
+      "sublabel": "安装、发现与本轮加载",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "result",
+      "type": "security",
+      "label": "检查实际交付",
+      "sublabel": "打开文件或核对业务动作",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "record",
+      "to": "task"
+    },
+    {
+      "from": "task",
+      "to": "material"
+    },
+    {
+      "from": "material",
+      "to": "ability"
+    },
+    {
+      "from": "ability",
+      "to": "rules"
+    },
+    {
+      "from": "rules",
+      "to": "result"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "一次只改变一个条件，不同时换模型、装插件、改规则",
+        "涉及发送、覆盖或删除时先停止扩大操作，检查真实状态后再决定是否重试"
+      ]
+    }
+  ]
+}

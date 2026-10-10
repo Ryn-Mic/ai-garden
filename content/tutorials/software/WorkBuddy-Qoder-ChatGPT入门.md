@@ -29,6 +29,16 @@ aliases: ["tutorials/WorkBuddy-Qoder-ChatGPT入门"]
 
 需要文件练习时，使用 [[tutorials/basics/练习材料与验收|虚构练习包]]；里面有原始材料、工作说明和独立验收清单。
 
+<!-- archify:software-entry:start -->
+## 三个产品都可复用的任务路线
+
+此图提炼共同的任务与验收动作；各产品菜单、模式、Skill 和授权方式仍按下面的小节分别核对。
+
+<iframe src="assets/diagrams/software-entry.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="软件入门：同一份材料，同一套验收标准"></iframe>
+
+[单独打开图表](assets/diagrams/software-entry.html)
+<!-- archify:software-entry:end -->
+
 ## WorkBuddy：从一个新任务开始
 
 适用：WorkBuddy 桌面工作台，不是 CodeBuddy 的编码产品界面。

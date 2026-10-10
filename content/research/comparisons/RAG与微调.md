@@ -67,6 +67,23 @@ RAG ：提供每一次回答需要的事实依据
 
 ## 决策流程
 
+<!-- archify:rag-or-finetune:start -->
+### 两种方案各自改变什么
+
+复用已上线的 RAG 与微调流程图：前者提供可检索的事实依据，后者调整模型的行为与输出模式。选择仍按下面的决策说明，并用实际任务评测。
+
+<iframe src="assets/rag-pipeline-flow.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="两种方案各自改变什么"></iframe>
+
+[单独打开图表](assets/rag-pipeline-flow.html)
+
+**微调：调整行为与输出模式**
+
+<iframe src="assets/finetuning-workflow.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="模型微调完整流程"></iframe>
+
+[单独打开图表](assets/finetuning-workflow.html)
+<!-- archify:rag-or-finetune:end -->
+
+
 ```text
 1. 先改提示 → 有效？ 收工（[[concepts/提示工程|提示工程]]）
 2. 问题是"缺知识"还是"缺引用"？ → RAG

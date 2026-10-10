@@ -231,6 +231,17 @@ Markdown + Mermaid 流程图
 
 ## 安装之后，实际发生了什么
 
+<!-- archify:skill-loading:start -->
+### 从发现到验收
+
+这是通用机制示意；实际扫描范围、选择方式和权限策略由宿主产品决定。
+
+<iframe src="assets/diagrams/skill-loading.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="Skill：发现、加载与交付是不同阶段"></iframe>
+
+[单独打开图表](assets/diagrams/skill-loading.html)
+<!-- archify:skill-loading:end -->
+
+
 支持 Agent Skills 机制的应用，工作流程通常是：
 
 ```

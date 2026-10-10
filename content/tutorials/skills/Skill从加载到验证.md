@@ -21,6 +21,16 @@ aliases: ["tutorials/Skill从加载到验证"]
 
 **准备**：熟悉 [[tutorials/basics/通用Agent的使用|会议记录练习]]。软件分支按官方文档整理，未在本机逐步实测；不把本文当作所有版本都相同的菜单截图指南。
 
+<!-- archify:verify-skill:start -->
+## 安装与生效的验证路线
+
+按自己的产品形态选择原生 Skill 或工作说明模板；最后分别记录安装、加载与交付证据。
+
+<iframe src="assets/diagrams/verify-skill.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="Skill 验证：装好、加载、交付分别检查"></iframe>
+
+[单独打开图表](assets/diagrams/verify-skill.html)
+<!-- archify:verify-skill:end -->
+
 ## 第 1 步：确认软件支持哪种方式
 
 | 软件形态 | 本文采用的方式 | 不能混为一谈 |

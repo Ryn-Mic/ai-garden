@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "构建 RAG：加载、索引、查询与出处验证",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "文档准备与索引"
+    },
+    {
+      "id": "stage1",
+      "label": "查询生成与回归验证"
+    }
+  ],
+  "mainPath": [
+    "env",
+    "load",
+    "index",
+    "query",
+    "sources",
+    "compare"
+  ],
+  "nodes": [
+    {
+      "id": "env",
+      "type": "cloud",
+      "label": "准备依赖与数据目录",
+      "sublabel": "确认模型和运行环境",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "load",
+      "type": "database",
+      "label": "加载并切分文档",
+      "sublabel": "先检查解析出的正文",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "index",
+      "type": "backend",
+      "label": "向量化并建索引",
+      "sublabel": "选择合适的 Embedding",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "query",
+      "type": "messagebus",
+      "label": "执行查询与生成",
+      "sublabel": "QueryEngine 检索后回答",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "sources",
+      "type": "security",
+      "label": "核对召回源",
+      "sublabel": "查看 source_nodes 相关性",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "compare",
+      "type": "security",
+      "label": "用固定问题集回归",
+      "sublabel": "改切分或持久化后复测",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "env",
+      "to": "load"
+    },
+    {
+      "from": "load",
+      "to": "index"
+    },
+    {
+      "from": "index",
+      "to": "query"
+    },
+    {
+      "from": "query",
+      "to": "sources"
+    },
+    {
+      "from": "sources",
+      "to": "compare"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "解析错误会传到后续检索；缺答案的问题应保留资料未提及",
+        "每次调整只改变明确条件，比较出处、缺失信息和专有名词召回"
+      ]
+    }
+  ]
+}

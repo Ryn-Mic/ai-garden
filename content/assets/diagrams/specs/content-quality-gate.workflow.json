@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "内容规范：分类、标级、连通与证据检查",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "classify",
+    "metadata",
+    "reading",
+    "links",
+    "build",
+    "source"
+  ],
+  "nodes": [
+    {
+      "id": "classify",
+      "type": "frontend",
+      "label": "按主要用途分类",
+      "sublabel": "教程、工具、概念或研究",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "metadata",
+      "type": "database",
+      "label": "填写一致的元数据",
+      "sublabel": "类型、门槛、标签与状态",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "reading",
+      "type": "security",
+      "label": "标明阅读与证据",
+      "sublabel": "前提、未实测项和限制",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "links",
+      "type": "messagebus",
+      "label": "补完整路径与导航",
+      "sublabel": "索引、系列、章节与别名",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "build",
+      "type": "security",
+      "label": "构建并校验产物",
+      "sublabel": "npm run build 与内容检查",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "source",
+      "type": "database",
+      "label": "推回 Gitee 内容源",
+      "sublabel": "避免副本被下一次同步覆盖",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "classify",
+      "to": "metadata"
+    },
+    {
+      "from": "metadata",
+      "to": "reading"
+    },
+    {
+      "from": "reading",
+      "to": "links"
+    },
+    {
+      "from": "links",
+      "to": "build"
+    },
+    {
+      "from": "build",
+      "to": "source"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "成熟度、难度与验证状态是不同维度；官网、Star 和构建通过都不是产品效果实测",
+        "系列只引用已有正文；sequence、knowledge_points、可见站点与返回导航保持一致"
+      ]
+    }
+  ]
+}

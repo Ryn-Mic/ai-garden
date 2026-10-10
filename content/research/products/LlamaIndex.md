@@ -35,6 +35,16 @@ aliases: ["GPT Index","agents/LlamaIndex"]
 
 RAG 的痛点在数据侧：格式五花八门、切分策略难调、检索质量不稳。LlamaIndex 把这一整段做成了可组合组件。
 
+<!-- archify:llamaindex-data-path:start -->
+### 数据准备与查询的分层链路
+
+QueryEngine 是检索与生成的封装；图中按数据准备、检索处理和回答展示核心抽象，不表示每个任务都必须用同一种索引。
+
+<iframe src="assets/diagrams/llamaindex-data-path.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="LlamaIndex：从文档接入到带出处的查询"></iframe>
+
+[单独打开图表](assets/diagrams/llamaindex-data-path.html)
+<!-- archify:llamaindex-data-path:end -->
+
 ## 核心抽象
 
 | 抽象 | 作用 |

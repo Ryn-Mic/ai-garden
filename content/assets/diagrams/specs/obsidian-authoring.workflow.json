@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Obsidian 配置：让写作目录、链接和附件对齐",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "输入与准备"
+    },
+    {
+      "id": "stage1",
+      "label": "处理与检查"
+    }
+  ],
+  "mainPath": [
+    "vault",
+    "links",
+    "assets",
+    "templates",
+    "write",
+    "verify"
+  ],
+  "nodes": [
+    {
+      "id": "vault",
+      "type": "frontend",
+      "label": "打开正确 Vault",
+      "sublabel": "写作源目录而非 Quartz 根目录",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "links",
+      "type": "security",
+      "label": "核对双链设置",
+      "sublabel": "从 Vault 根使用完整路径",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "assets",
+      "type": "database",
+      "label": "核对附件位置",
+      "sublabel": "统一使用 assets 目录",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "templates",
+      "type": "database",
+      "label": "确认模板目录",
+      "sublabel": "templates 不作为发布正文",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "write",
+      "type": "frontend",
+      "label": "按文章类型创建",
+      "sublabel": "正文分类，系列只引用",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "verify",
+      "type": "security",
+      "label": "测试模板与链接",
+      "sublabel": "检查图谱、附件和跳转",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "vault",
+      "to": "links"
+    },
+    {
+      "from": "links",
+      "to": "assets"
+    },
+    {
+      "from": "assets",
+      "to": "templates"
+    },
+    {
+      "from": "templates",
+      "to": "write"
+    },
+    {
+      "from": "write",
+      "to": "verify"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "Apple 设备可用 iCloud 同步，站点内容仍需推送 Gitee；构建副本会被上游覆盖",
+        "iCloud 占位符先保留下载；配置、难度与证据等级仍按写作规范检查"
+      ]
+    }
+  ]
+}

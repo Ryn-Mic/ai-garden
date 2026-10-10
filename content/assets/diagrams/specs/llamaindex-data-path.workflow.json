@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "LlamaIndex：从文档接入到带出处的查询",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "输入与界面"
+        },
+        "backend": {
+          "label": "处理逻辑"
+        },
+        "database": {
+          "label": "资料与记录"
+        },
+        "security": {
+          "label": "检查与边界"
+        },
+        "cloud": {
+          "label": "服务与环境"
+        },
+        "external": {
+          "label": "外部参与者"
+        },
+        "messagebus": {
+          "label": "传递与协作"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "stage0",
+      "label": "数据接入与索引准备"
+    },
+    {
+      "id": "stage1",
+      "label": "检索、处理与查询封装"
+    }
+  ],
+  "mainPath": [
+    "reader",
+    "split",
+    "index",
+    "retrieve",
+    "post",
+    "query"
+  ],
+  "nodes": [
+    {
+      "id": "reader",
+      "type": "database",
+      "label": "数据接入",
+      "sublabel": "Reader / Connector",
+      "width": 180,
+      "lane": "stage0",
+      "col": 0
+    },
+    {
+      "id": "split",
+      "type": "backend",
+      "label": "切分与元数据",
+      "sublabel": "Node / TextSplitter",
+      "width": 180,
+      "lane": "stage0",
+      "col": 1
+    },
+    {
+      "id": "index",
+      "type": "database",
+      "label": "Index",
+      "sublabel": "向量、摘要、关键词等索引",
+      "width": 180,
+      "lane": "stage0",
+      "col": 2
+    },
+    {
+      "id": "retrieve",
+      "type": "backend",
+      "label": "Retriever",
+      "sublabel": "按选定策略取得相关节点",
+      "width": 180,
+      "lane": "stage1",
+      "col": 2
+    },
+    {
+      "id": "post",
+      "type": "backend",
+      "label": "PostProcessor",
+      "sublabel": "按需重排、过滤和去重",
+      "width": 180,
+      "lane": "stage1",
+      "col": 3
+    },
+    {
+      "id": "query",
+      "type": "messagebus",
+      "label": "QueryEngine",
+      "sublabel": "组合检索与生成的查询入口",
+      "width": 180,
+      "lane": "stage1",
+      "col": 4
+    }
+  ],
+  "edges": [
+    {
+      "from": "reader",
+      "to": "split"
+    },
+    {
+      "from": "split",
+      "to": "index"
+    },
+    {
+      "from": "index",
+      "to": "retrieve"
+    },
+    {
+      "from": "retrieve",
+      "to": "post"
+    },
+    {
+      "from": "post",
+      "to": "query"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "边界与验收",
+      "items": [
+        "索引形态要按总结、精确匹配、语义或层次问答需求选择",
+        "数据检索与复杂状态编排可以分工，不把一个框架当所有任务的最佳方案"
+      ]
+    }
+  ]
+}

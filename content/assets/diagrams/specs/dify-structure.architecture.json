@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {"title": "Dify：应用编排与知识库的关系", "locale": "zh-CN", "quality_profile": "showcase", "viewBox": [1140, 660]},
+  "components": [
+    {"id": "client", "type": "frontend", "label": "Web App / API", "sublabel": "发布后的应用入口", "pos": [50, 260], "size": [200, 90]},
+    {"id": "flow", "type": "backend", "label": "工作流编排", "sublabel": "LLM、检索、条件等节点", "pos": [450, 260], "size": [220, 90]},
+    {"id": "model", "type": "cloud", "label": "模型供应商", "sublabel": "模型接入与生成能力", "pos": [880, 260], "size": [200, 90]},
+    {"id": "knowledge", "type": "database", "label": "知识库", "sublabel": "切分、向量化与检索", "pos": [450, 70], "size": [220, 90]},
+    {"id": "tools", "type": "external", "label": "工具与外部服务", "sublabel": "自定义 API / MCP", "pos": [880, 480], "size": [200, 90]},
+    {"id": "logs", "type": "database", "label": "调用日志", "sublabel": "输入输出、Token、耗时", "pos": [450, 480], "size": [220, 90]}
+  ],
+  "connections": [
+    {"from": "client", "to": "flow", "label": "提交应用请求"},
+    {"from": "flow", "to": "model", "label": "调用模型"},
+    {"from": "knowledge", "to": "flow", "label": "返回检索片段", "labelDy": 24},
+    {"from": "flow", "to": "tools", "label": "按工作流调用", "variant": "dashed"},
+    {"from": "flow", "to": "logs", "label": "记录执行证据", "variant": "dashed", "labelDy": 24}
+  ],
+  "cards": [{"dot": "amber", "title": "概念结构，不是固定部署拓扑", "items": ["自托管仍需核对模型与工具的数据流向，不能仅凭部署地点推断数据留在内网", "复杂检索与状态编排的定制空间取决于所用版本和平台能力"]}]
+}

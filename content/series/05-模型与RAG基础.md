@@ -26,6 +26,16 @@ knowledge_points: [concepts/Token, concepts/采样, concepts/幻觉, concepts/�
 
 **目标**：区分模型生成、表示、检索与行为调整，并能为文档问答设计可追溯的验收标准。
 
+<!-- archify:series-model-rag:start -->
+## 路线图
+
+这是研究阅读顺序，不表示构建 RAG 必须先学完 Transformer 论文；只关注检索应用时可从第 1 站转第 3 站。
+
+<iframe src="assets/diagrams/series-model-rag.html" width="100%" height="700" loading="lazy" style="border: 1px solid var(--gray); border-radius: 8px; margin: 1rem 0;" title="系列 05：区分生成、表示、检索与行为调整"></iframe>
+
+[单独打开图表](assets/diagrams/series-model-rag.html)
+<!-- archify:series-model-rag:end -->
+
 ## 主线：1 → 2 → 3 → 4 → 5
 
 [[concepts/大语言模型|1 · 模型做什么]] → [[concepts/Transformer|2 · 架构怎样工作]] → [[concepts/Embedding|3 · 资料怎样表示]] → [[concepts/RAG|4 · 检索怎样参与回答]] → [[research/comparisons/RAG与微调|5 · 选择知识接入方案]]
